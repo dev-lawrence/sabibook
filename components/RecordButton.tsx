@@ -62,8 +62,11 @@ export function RecordButton({ size = "large", hint }: { size?: "large" | "compa
     timerRef.current = null;
   }, []);
 
-  // Let go of the mic if the person leaves the page mid recording.
+  // Let go of the mic if the person leaves the page mid recording. The flag is
+  // reset on mount because React's Strict Mode mounts, unmounts and mounts
+  // again in development, and a stale flag would swallow every recording.
   useEffect(() => {
+    cancelledRef.current = false;
     return () => {
       cancelledRef.current = true;
       if (recorderRef.current?.state === "recording") recorderRef.current.stop();
@@ -114,10 +117,20 @@ export function RecordButton({ size = "large", hint }: { size?: "large" | "compa
       return;
     }
     setPhaseBoth("starting");
+    // If the permission prompt never shows (some in-app browsers hide it),
+    // say so instead of waiting forever.
+    const slow = setTimeout(() => {
+      if (phaseRef.current === "starting") {
+        setMessage(
+          "Still waiting for the microphone. Look for a permission prompt near the address bar, or type it instead.",
+        );
+      }
+    }, 5000);
     let stream: MediaStream;
     try {
       stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     } catch (err) {
+      clearTimeout(slow);
       const name = err instanceof DOMException ? err.name : "";
       if (name === "NotAllowedError" || name === "SecurityError") {
         setDenied(true);
@@ -127,8 +140,11 @@ export function RecordButton({ size = "large", hint }: { size?: "large" | "compa
       setPhaseBoth("idle");
       return;
     }
+    clearTimeout(slow);
+    setMessage(null);
     if (cancelledRef.current) {
       stream.getTracks().forEach((t) => t.stop());
+      setPhaseBoth("idle");
       return;
     }
     streamRef.current = stream;
