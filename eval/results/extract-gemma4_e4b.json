@@ -1,0 +1,1461 @@
+{
+  "date": "2026-10-13T22:58:25.732Z",
+  "baseUrlHost": "localhost:11434",
+  "model": "gemma4:e4b",
+  "results": [
+    {
+      "id": "en-01",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 62979,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Mrs Adeyemi",
+        "items": [
+          {
+            "name": "garri (bag)",
+            "qty": 6,
+            "amount": 48000
+          }
+        ],
+        "total": 48000,
+        "paid": 48000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-02",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 3619,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Chidi",
+        "items": [
+          {
+            "name": "palm oil (litre)",
+            "qty": 10,
+            "amount": 45000
+          }
+        ],
+        "total": 45000,
+        "paid": 30000,
+        "balance": 15000,
+        "note": "will bring the rest next week",
+        "flags": []
+      }
+    },
+    {
+      "id": "en-03",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2571,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Alhaji Bello",
+        "items": [
+          {
+            "name": "tomatoes (basket)",
+            "qty": 1,
+            "amount": 20000
+          }
+        ],
+        "total": 20000,
+        "paid": 15000,
+        "balance": 5000,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-04",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 52813,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "transport to Mile 12 market",
+            "qty": null,
+            "amount": 1800
+          }
+        ],
+        "total": 1800,
+        "paid": 1800,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-05",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2367,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-12",
+        "customerName": null,
+        "items": [
+          {
+            "name": "NEPA light bill",
+            "qty": null,
+            "amount": 10500
+          }
+        ],
+        "total": 10500,
+        "paid": 10500,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-06",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1655,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "shop rent",
+            "qty": null,
+            "amount": 1200000
+          }
+        ],
+        "total": 1200000,
+        "paid": 1200000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-07",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1971,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "data recharge",
+            "qty": null,
+            "amount": 2000
+          }
+        ],
+        "total": 2000,
+        "paid": 2000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-08",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2022,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "stock_purchase",
+        "occurredOn": "2026-10-13",
+        "customerName": "Alhaji Bello",
+        "items": [
+          {
+            "name": "Peak milk (carton)",
+            "qty": 5,
+            "amount": 60000
+          }
+        ],
+        "total": 60000,
+        "paid": 60000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-09",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2733,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "stock_purchase",
+        "occurredOn": "2026-10-13",
+        "customerName": "Mama Nkechi",
+        "items": [
+          {
+            "name": "ofada rice (bag)",
+            "qty": 1,
+            "amount": 55000
+          },
+          {
+            "name": "palm oil (jerrycan)",
+            "qty": 2,
+            "amount": 36000
+          }
+        ],
+        "total": 91000,
+        "paid": 91000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-10",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2610,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "payment_received",
+        "occurredOn": "2026-10-13",
+        "customerName": "Chidi",
+        "items": [],
+        "total": 20000,
+        "paid": 20000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-11",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1154,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "payment_received",
+        "occurredOn": "2026-10-12",
+        "customerName": "Mrs Adeyemi",
+        "items": [],
+        "total": 75000,
+        "paid": 75000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-12",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1798,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "eggs (crate)",
+            "qty": 2,
+            "amount": 19000
+          }
+        ],
+        "total": 19000,
+        "paid": 19000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-13",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1641,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Alhaji Bello",
+        "items": [
+          {
+            "name": "rice (bag)",
+            "qty": 3,
+            "amount": 105000
+          }
+        ],
+        "total": 105000,
+        "paid": 0,
+        "balance": 105000,
+        "note": "on credit",
+        "flags": []
+      }
+    },
+    {
+      "id": "en-14",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": false,
+        "balance": false,
+        "items": true,
+        "flags": false
+      },
+      "exact": false,
+      "ms": 1857,
+      "error": null,
+      "diffs": [
+        "paid 0 vs null",
+        "balance 36000 vs null",
+        "flags missing missing"
+      ],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Chidi",
+        "items": [
+          {
+            "name": "garri (bag)",
+            "qty": 2,
+            "amount": 36000
+          }
+        ],
+        "total": 36000,
+        "paid": 0,
+        "balance": 36000,
+        "note": "will settle later",
+        "flags": []
+      }
+    },
+    {
+      "id": "en-15",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 10456,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-31",
+        "customerName": "Mrs Adeyemi",
+        "items": [
+          {
+            "name": "ankara fabric (yard)",
+            "qty": 6,
+            "amount": 30000
+          }
+        ],
+        "total": 30000,
+        "paid": 10000,
+        "balance": 20000,
+        "note": "owes the rest",
+        "flags": []
+      }
+    },
+    {
+      "id": "en-16",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 6173,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2027-01-01",
+        "customerName": "Kelechi",
+        "items": [
+          {
+            "name": "phone charger",
+            "qty": 2,
+            "amount": 7000
+          },
+          {
+            "name": "screen guard",
+            "qty": 1,
+            "amount": 1500
+          }
+        ],
+        "total": 8500,
+        "paid": 8500,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-17",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2529,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-11",
+        "customerName": "Yusuf",
+        "items": [
+          {
+            "name": "suya",
+            "qty": null,
+            "amount": 4000
+          }
+        ],
+        "total": 4000,
+        "paid": 0,
+        "balance": 4000,
+        "note": "on credit",
+        "flags": []
+      }
+    },
+    {
+      "id": "en-18",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": false,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": false,
+      "ms": 2486,
+      "error": null,
+      "diffs": [
+        "paid 0 vs null"
+      ],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Chidi",
+        "items": [
+          {
+            "name": "cement (bag)",
+            "qty": 4,
+            "amount": null
+          }
+        ],
+        "total": null,
+        "paid": 0,
+        "balance": null,
+        "note": "price not agreed",
+        "flags": [
+          {
+            "field": "total",
+            "code": "missing",
+            "message": "How much was it in total?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "en-19",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1932,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "ofada rice (bag)",
+            "qty": 2,
+            "amount": 90000
+          }
+        ],
+        "total": 90000,
+        "paid": 0,
+        "balance": 90000,
+        "note": "on credit",
+        "flags": [
+          {
+            "field": "customerName",
+            "code": "credit_without_customer",
+            "message": "Who is owing? Add a name so you can collect it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "en-20",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": false,
+        "paid": false,
+        "balance": true,
+        "items": true,
+        "flags": false
+      },
+      "exact": false,
+      "ms": 2728,
+      "error": null,
+      "diffs": [
+        "total 80000 vs 60000",
+        "paid 80000 vs 60000",
+        "flags missing items_mismatch"
+      ],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Alhaji Bello",
+        "items": [
+          {
+            "name": "garri (bag)",
+            "qty": 3,
+            "amount": 30000
+          },
+          {
+            "name": "beans (bag)",
+            "qty": 2,
+            "amount": 50000
+          }
+        ],
+        "total": 80000,
+        "paid": 80000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-21",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1279,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "payment_received",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [],
+        "total": 5000,
+        "paid": 5000,
+        "balance": 0,
+        "note": null,
+        "flags": [
+          {
+            "field": "customerName",
+            "code": "missing",
+            "message": "Who paid you?"
+          }
+        ]
+      }
+    },
+    {
+      "id": "en-22",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": false,
+        "balance": false,
+        "items": true,
+        "flags": false
+      },
+      "exact": false,
+      "ms": 1856,
+      "error": null,
+      "diffs": [
+        "paid 12000 vs 15000",
+        "balance 0 vs -3000",
+        "flags missing overpaid"
+      ],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Chidi",
+        "items": [
+          {
+            "name": "Peak milk (carton)",
+            "qty": 1,
+            "amount": 12000
+          }
+        ],
+        "total": 12000,
+        "paid": 12000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-23",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1550,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Alhaji Bello",
+        "items": [
+          {
+            "name": "generator",
+            "qty": 1,
+            "amount": 1500000
+          }
+        ],
+        "total": 1500000,
+        "paid": 1000000,
+        "balance": 500000,
+        "note": "balance by month end",
+        "flags": []
+      }
+    },
+    {
+      "id": "en-24",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2627,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "food for shop boy",
+            "qty": null,
+            "amount": 500
+          }
+        ],
+        "total": 500,
+        "paid": 500,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "en-25",
+      "lang": "en",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2929,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Mama Tola",
+        "items": [
+          {
+            "name": "Peak milk (tin)",
+            "qty": 3,
+            "amount": 3600
+          },
+          {
+            "name": "Indomie (carton)",
+            "qty": 1,
+            "amount": 11000
+          }
+        ],
+        "total": 14600,
+        "paid": 10000,
+        "balance": 4600,
+        "note": "will balance tomorrow",
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-01",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2524,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Madam Joy",
+        "items": [
+          {
+            "name": "garri (bag)",
+            "qty": 4,
+            "amount": 36000
+          }
+        ],
+        "total": 36000,
+        "paid": 36000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-02",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2380,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Sunday",
+        "items": [
+          {
+            "name": "Peak milk (carton)",
+            "qty": 1,
+            "amount": 40000
+          }
+        ],
+        "total": 40000,
+        "paid": 20000,
+        "balance": 20000,
+        "note": "will pay balance for Friday",
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-03",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 10697,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Madam Joy",
+        "items": [
+          {
+            "name": "eggs (crate)",
+            "qty": 2,
+            "amount": 18000
+          }
+        ],
+        "total": 18000,
+        "paid": 0,
+        "balance": 18000,
+        "note": "on credit",
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-04",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1901,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "transport to Idumota",
+            "qty": null,
+            "amount": 2500
+          }
+        ],
+        "total": 2500,
+        "paid": 2500,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-05",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 9890,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "payment_received",
+        "occurredOn": "2026-10-11",
+        "customerName": "Sunday",
+        "items": [],
+        "total": 15000,
+        "paid": 15000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-06",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 3062,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "stock_purchase",
+        "occurredOn": "2026-10-13",
+        "customerName": "Mama Nkechi",
+        "items": [
+          {
+            "name": "crayfish (kilo)",
+            "qty": 10,
+            "amount": 60000
+          },
+          {
+            "name": "ofada rice (bag)",
+            "qty": 1,
+            "amount": 52000
+          }
+        ],
+        "total": 112000,
+        "paid": 112000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-07",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 10002,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "rice",
+            "qty": 2,
+            "amount": 90000
+          }
+        ],
+        "total": 90000,
+        "paid": 0,
+        "balance": 90000,
+        "note": "on credit",
+        "flags": [
+          {
+            "field": "customerName",
+            "code": "credit_without_customer",
+            "message": "Who is owing? Add a name so you can collect it."
+          }
+        ]
+      }
+    },
+    {
+      "id": "pcm-08",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 6468,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "recharge card",
+            "qty": 1,
+            "amount": 5000
+          }
+        ],
+        "total": 5000,
+        "paid": 5000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-09",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1609,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-12",
+        "customerName": null,
+        "items": [
+          {
+            "name": "NEPA light bill",
+            "qty": null,
+            "amount": 8200
+          }
+        ],
+        "total": 8200,
+        "paid": 8200,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "pcm-10",
+      "lang": "pcm",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1433,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Ada",
+        "items": [
+          {
+            "name": "ankara (yard)",
+            "qty": 6,
+            "amount": 25000
+          }
+        ],
+        "total": 25000,
+        "paid": 10000,
+        "balance": 15000,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "mix-01",
+      "lang": "mixed",
+      "ok": {
+        "type": true,
+        "occurredOn": false,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": false,
+      "ms": 8241,
+      "error": null,
+      "diffs": [
+        "date 2026-10-13 vs 2026-10-12"
+      ],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Iya Bisi",
+        "items": [
+          {
+            "name": "epo pupa",
+            "qty": 10,
+            "amount": 10000
+          }
+        ],
+        "total": 10000,
+        "paid": 10000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "mix-02",
+      "lang": "mixed",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 7634,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "payment_received",
+        "occurredOn": "2026-10-13",
+        "customerName": "Alhaji Musa",
+        "items": [],
+        "total": 5000,
+        "paid": 5000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "mix-03",
+      "lang": "mixed",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2241,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Obiageli",
+        "items": [
+          {
+            "name": "rice (bag)",
+            "qty": 2,
+            "amount": 90000
+          }
+        ],
+        "total": 90000,
+        "paid": 40000,
+        "balance": 50000,
+        "note": "will pay balance tomorrow",
+        "flags": []
+      }
+    },
+    {
+      "id": "mix-04",
+      "lang": "mixed",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 2506,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "expense",
+        "occurredOn": "2026-10-13",
+        "customerName": null,
+        "items": [
+          {
+            "name": "shop rent",
+            "qty": null,
+            "amount": 800000
+          }
+        ],
+        "total": 800000,
+        "paid": 800000,
+        "balance": 0,
+        "note": null,
+        "flags": []
+      }
+    },
+    {
+      "id": "mix-05",
+      "lang": "mixed",
+      "ok": {
+        "type": true,
+        "occurredOn": true,
+        "customerName": true,
+        "total": true,
+        "paid": true,
+        "balance": true,
+        "items": true,
+        "flags": true
+      },
+      "exact": true,
+      "ms": 1742,
+      "error": null,
+      "diffs": [],
+      "predicted": {
+        "type": "sale",
+        "occurredOn": "2026-10-13",
+        "customerName": "Hajiya Amina",
+        "items": [
+          {
+            "name": "sugar (bag)",
+            "qty": 3,
+            "amount": 60000
+          }
+        ],
+        "total": 60000,
+        "paid": 0,
+        "balance": 60000,
+        "note": "on credit",
+        "flags": []
+      }
+    }
+  ],
+  "fieldAcc": {
+    "type": "100.0%",
+    "occurredOn": "97.5%",
+    "customerName": "100.0%",
+    "total": "97.5%",
+    "paid": "90.0%",
+    "balance": "95.0%",
+    "items": "100.0%",
+    "flags": "92.5%"
+  },
+  "exactRate": "87.5%",
+  "exactByLang": {
+    "en": "84.0% (21/25)",
+    "pcm": "100.0% (10/10)",
+    "mixed": "80.0% (4/5)"
+  },
+  "median": 2506,
+  "p90": 10002,
+  "errors": 0
+}
