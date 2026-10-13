@@ -92,7 +92,11 @@ export default defineSchema({
       "status",
       "occurredOn",
     ])
-    .index("by_customerId_and_occurredOn", ["customerId", "occurredOn"]),
+    .index("by_customerId_and_status_and_occurredOn", [
+      "customerId",
+      "status",
+      "occurredOn",
+    ]),
 
   customers: defineTable({
     userId: v.id("users"),

@@ -1,0 +1,1025 @@
+[
+  {
+    "id": "en-01",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Mrs Adeyemi bought six bags of garri from me, forty eight thousand naira, she paid cash.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Mrs Adeyemi",
+      "total": 48000,
+      "paid": 48000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "garri",
+          "qty": 6,
+          "amount": 48000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-02",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Sold ten litres of palm oil to Chidi for 45k. He paid 30k and will bring the rest next week.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Chidi",
+      "total": 45000,
+      "paid": 30000,
+      "balance": 15000,
+      "items": [
+        {
+          "name": "palm oil",
+          "qty": 10,
+          "amount": 45000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-03",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "I sold one basket of tomatoes to Alhaji Bello for 20 thousand, he paid fifteen.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Alhaji Bello",
+      "total": 20000,
+      "paid": 15000,
+      "balance": 5000,
+      "items": [
+        {
+          "name": "tomatoes (basket)",
+          "qty": 1,
+          "amount": 20000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-04",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "Transport to Mile 12 market this morning was one thousand eight hundred naira.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 1800,
+      "paid": 1800,
+      "balance": 0,
+      "items": [
+        {
+          "name": "transport to Mile 12 market",
+          "qty": null,
+          "amount": 1800
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-05",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "I paid the NEPA light bill for the shop yesterday, ten thousand five hundred.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-12",
+      "customerName": null,
+      "total": 10500,
+      "paid": 10500,
+      "balance": 0,
+      "items": [
+        {
+          "name": "NEPA light bill",
+          "qty": null,
+          "amount": 10500
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-06",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "Shop rent for the year, I paid one point two million naira today.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 1200000,
+      "paid": 1200000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "shop rent",
+          "qty": null,
+          "amount": 1200000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-07",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "I recharged data for the shop phone, two k.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 2000,
+      "paid": 2000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "data",
+          "qty": null,
+          "amount": 2000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-08",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Alhaji Bello"
+    ],
+    "text": "Bought five cartons of Peak milk at twelve k each from Alhaji Bello, paid everything.",
+    "expected": {
+      "type": "stock_purchase",
+      "occurredOn": "2026-10-13",
+      "customerName": "Alhaji Bello",
+      "total": 60000,
+      "paid": 60000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "Peak milk (carton)",
+          "qty": 5,
+          "amount": 60000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-09",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mama Nkechi"
+    ],
+    "text": "Bought a bag of ofada rice for fifty five thousand, plus two jerrycans of palm oil at eighteen thousand each from Mama Nkechi. Paid it all.",
+    "expected": {
+      "type": "stock_purchase",
+      "occurredOn": "2026-10-13",
+      "customerName": "Mama Nkechi",
+      "total": 91000,
+      "paid": 91000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "ofada rice (bag)",
+          "qty": 1,
+          "amount": 55000
+        },
+        {
+          "name": "palm oil (jerrycan)",
+          "qty": 2,
+          "amount": 36000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-10",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Chidi brought twenty thousand today for the money he is owing me.",
+    "expected": {
+      "type": "payment_received",
+      "occurredOn": "2026-10-13",
+      "customerName": "Chidi",
+      "total": 20000,
+      "paid": 20000,
+      "balance": 0,
+      "items": [],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-11",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "mrs adeyemi paid me part of her old debt yesterday, 75k.",
+    "expected": {
+      "type": "payment_received",
+      "occurredOn": "2026-10-12",
+      "customerName": "Mrs Adeyemi",
+      "total": 75000,
+      "paid": 75000,
+      "balance": 0,
+      "items": [],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-12",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "A woman just bought two crates of eggs, nine thousand five hundred each, she paid cash.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 19000,
+      "paid": 19000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "eggs (crate)",
+          "qty": 2,
+          "amount": 19000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-13",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Alhaji Bello collected three bags of rice on credit, total one hundred and five thousand. He has not paid anything.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Alhaji Bello",
+      "total": 105000,
+      "paid": 0,
+      "balance": 105000,
+      "items": [
+        {
+          "name": "rice",
+          "qty": 3,
+          "amount": 105000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-14",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Chidi took two bags of garri on credit for thirty six thousand, we will settle later.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Chidi",
+      "total": 36000,
+      "paid": null,
+      "balance": null,
+      "items": [
+        {
+          "name": "garri",
+          "qty": 2,
+          "amount": 36000
+        }
+      ],
+      "flags": [
+        "missing"
+      ]
+    }
+  },
+  {
+    "id": "en-15",
+    "lang": "en",
+    "today": "2026-11-01",
+    "customers": [
+      "Mrs Adeyemi"
+    ],
+    "text": "Yesterday I sold six yards of ankara fabric to Mrs Adeyemi for thirty thousand. She paid ten thousand and owes the rest.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-31",
+      "customerName": "Mrs Adeyemi",
+      "total": 30000,
+      "paid": 10000,
+      "balance": 20000,
+      "items": [
+        {
+          "name": "ankara fabric",
+          "qty": 6,
+          "amount": 30000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-16",
+    "lang": "en",
+    "today": "2027-01-02",
+    "customers": [
+      "Kelechi"
+    ],
+    "text": "Yesterday I sold two phone chargers and a screen guard to Kelechi. Chargers were three thousand five hundred each and the screen guard one thousand five hundred. She paid in full.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2027-01-01",
+      "customerName": "Kelechi",
+      "total": 8500,
+      "paid": 8500,
+      "balance": 0,
+      "items": [
+        {
+          "name": "phone charger",
+          "qty": 2,
+          "amount": 7000
+        },
+        {
+          "name": "screen guard",
+          "qty": 1,
+          "amount": 1500
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-17",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Yusuf"
+    ],
+    "text": "Two days ago Yusuf bought suya for four thousand naira on credit and has not paid.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-11",
+      "customerName": "Yusuf",
+      "total": 4000,
+      "paid": 0,
+      "balance": 4000,
+      "items": [
+        {
+          "name": "suya",
+          "qty": null,
+          "amount": 4000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-18",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Chidi collected four bags of cement from me today but we have not agreed the price yet.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Chidi",
+      "total": null,
+      "paid": null,
+      "balance": null,
+      "items": [
+        {
+          "name": "cement",
+          "qty": 4,
+          "amount": null
+        }
+      ],
+      "flags": [
+        "missing"
+      ]
+    }
+  },
+  {
+    "id": "en-19",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "I sold two bags of ofada rice for ninety thousand on credit today. A man took it, I do not know his name, nobody paid anything.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 90000,
+      "paid": 0,
+      "balance": 90000,
+      "items": [
+        {
+          "name": "ofada rice",
+          "qty": 2,
+          "amount": 90000
+        }
+      ],
+      "flags": [
+        "credit_without_customer"
+      ]
+    }
+  },
+  {
+    "id": "en-20",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Sold three bags of garri at ten thousand each and two bags of beans at twenty five thousand each to Alhaji Bello, total sixty thousand, he paid all.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Alhaji Bello",
+      "total": 60000,
+      "paid": 60000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "garri",
+          "qty": 3,
+          "amount": 30000
+        },
+        {
+          "name": "beans",
+          "qty": 2,
+          "amount": 50000
+        }
+      ],
+      "flags": [
+        "items_mismatch"
+      ]
+    }
+  },
+  {
+    "id": "en-21",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Somebody paid me five thousand today for old debt, I did not catch the name.",
+    "expected": {
+      "type": "payment_received",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 5000,
+      "paid": 5000,
+      "balance": 0,
+      "items": [],
+      "flags": [
+        "missing"
+      ]
+    }
+  },
+  {
+    "id": "en-22",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Sold a carton of Peak milk to Chidi for twelve thousand, he gave me fifteen thousand and I owe him change.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Chidi",
+      "total": 12000,
+      "paid": 15000,
+      "balance": -3000,
+      "items": [
+        {
+          "name": "Peak milk (carton)",
+          "qty": 1,
+          "amount": 12000
+        }
+      ],
+      "flags": [
+        "overpaid"
+      ]
+    }
+  },
+  {
+    "id": "en-23",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mrs Adeyemi",
+      "Chidi",
+      "Alhaji Bello"
+    ],
+    "text": "Sold a generator to Alhaji Bello for 1.5m, he paid 1m, balance by month end.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Alhaji Bello",
+      "total": 1500000,
+      "paid": 1000000,
+      "balance": 500000,
+      "items": [
+        {
+          "name": "generator",
+          "qty": 1,
+          "amount": 1500000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-24",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "I gave the shop boy five hundred naira for lunch today.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 500,
+      "paid": 500,
+      "balance": 0,
+      "items": [
+        {
+          "name": "lunch for shop boy",
+          "qty": null,
+          "amount": 500
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "en-25",
+    "lang": "en",
+    "today": "2026-10-13",
+    "customers": [
+      "Mama Tola"
+    ],
+    "text": "Mama Tola bought three tins of Peak milk at 1,200 each and one carton of Indomie for eleven thousand. She paid ten thousand and will balance tomorrow.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Mama Tola",
+      "total": 14600,
+      "paid": 10000,
+      "balance": 4600,
+      "items": [
+        {
+          "name": "Peak milk (tin)",
+          "qty": 3,
+          "amount": 3600
+        },
+        {
+          "name": "Indomie (carton)",
+          "qty": 1,
+          "amount": 11000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-01",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [
+      "Madam Joy",
+      "Sunday"
+    ],
+    "text": "I sell four bags of garri give Madam Joy, na thirty six thousand, she don pay all.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Madam Joy",
+      "total": 36000,
+      "paid": 36000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "garri",
+          "qty": 4,
+          "amount": 36000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-02",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [
+      "Madam Joy",
+      "Sunday"
+    ],
+    "text": "Sunday collect one carton of Peak milk, na forty thousand, e pay twenty, e go balance me for Friday.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Sunday",
+      "total": 40000,
+      "paid": 20000,
+      "balance": 20000,
+      "items": [
+        {
+          "name": "Peak milk (carton)",
+          "qty": 1,
+          "amount": 40000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-03",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [
+      "Madam Joy",
+      "Sunday"
+    ],
+    "text": "Madam Joy carry two crates of egg for credit, na eighteen thousand, she never pay anything.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Madam Joy",
+      "total": 18000,
+      "paid": 0,
+      "balance": 18000,
+      "items": [
+        {
+          "name": "eggs (crate)",
+          "qty": 2,
+          "amount": 18000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-04",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "Today I use two thousand five hundred naira do transport go Idumota.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 2500,
+      "paid": 2500,
+      "balance": 0,
+      "items": [
+        {
+          "name": "transport to Idumota",
+          "qty": null,
+          "amount": 2500
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-05",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [
+      "Madam Joy",
+      "Sunday"
+    ],
+    "text": "Last two days Sunday bring fifteen thousand for the old money wey him dey owe.",
+    "expected": {
+      "type": "payment_received",
+      "occurredOn": "2026-10-11",
+      "customerName": "Sunday",
+      "total": 15000,
+      "paid": 15000,
+      "balance": 0,
+      "items": [],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-06",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [
+      "Mama Nkechi"
+    ],
+    "text": "I buy ten kilo of crayfish for sixty thousand, then one bag of ofada rice, 52k, from Mama Nkechi. I don pay everything.",
+    "expected": {
+      "type": "stock_purchase",
+      "occurredOn": "2026-10-13",
+      "customerName": "Mama Nkechi",
+      "total": 112000,
+      "paid": 112000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "crayfish (kg)",
+          "qty": 10,
+          "amount": 60000
+        },
+        {
+          "name": "ofada rice (bag)",
+          "qty": 1,
+          "amount": 52000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-07",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [
+      "Madam Joy",
+      "Sunday"
+    ],
+    "text": "Man collect two bag of rice for credit today, e never pay, na ninety k.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 90000,
+      "paid": 0,
+      "balance": 90000,
+      "items": [
+        {
+          "name": "rice (bag)",
+          "qty": 2,
+          "amount": 90000
+        }
+      ],
+      "flags": [
+        "credit_without_customer"
+      ]
+    }
+  },
+  {
+    "id": "pcm-08",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "One customer buy recharge card worth five thousand naira, she pay cash.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 5000,
+      "paid": 5000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "recharge card",
+          "qty": null,
+          "amount": 5000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-09",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "Yesterday NEPA light bill for shop na eight thousand two hundred naira, I don pay am.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-12",
+      "customerName": null,
+      "total": 8200,
+      "paid": 8200,
+      "balance": 0,
+      "items": [
+        {
+          "name": "NEPA light bill",
+          "qty": null,
+          "amount": 8200
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "pcm-10",
+    "lang": "pcm",
+    "today": "2026-10-13",
+    "customers": [
+      "Ada",
+      "Sunday"
+    ],
+    "text": "Ada buy ankara six yard, na twenty five thousand, she pay ten.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Ada",
+      "total": 25000,
+      "paid": 10000,
+      "balance": 15000,
+      "items": [
+        {
+          "name": "ankara fabric",
+          "qty": 6,
+          "amount": 25000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "mix-01",
+    "lang": "mixed",
+    "today": "2026-10-13",
+    "customers": [
+      "Iya Bisi",
+      "Musa"
+    ],
+    "text": "Lana, Iya Bisi ra ten litres of epo pupa, ten thousand naira, o san gbogbo e.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-12",
+      "customerName": "Iya Bisi",
+      "total": 10000,
+      "paid": 10000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "palm oil",
+          "qty": 10,
+          "amount": 10000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "mix-02",
+    "lang": "mixed",
+    "today": "2026-10-13",
+    "customers": [
+      "Alhaji Musa"
+    ],
+    "text": "Alhaji Musa ya biya mini five thousand today, na old debt dinsa.",
+    "expected": {
+      "type": "payment_received",
+      "occurredOn": "2026-10-13",
+      "customerName": "Alhaji Musa",
+      "total": 5000,
+      "paid": 5000,
+      "balance": 0,
+      "items": [],
+      "flags": []
+    }
+  },
+  {
+    "id": "mix-03",
+    "lang": "mixed",
+    "today": "2026-10-13",
+    "customers": [
+      "Obiageli",
+      "Sunday"
+    ],
+    "text": "Obiageli buy two bags of rice, ninety thousand, o kwuola forty thousand, nke fodu na tomorrow.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Obiageli",
+      "total": 90000,
+      "paid": 40000,
+      "balance": 50000,
+      "items": [
+        {
+          "name": "rice",
+          "qty": 2,
+          "amount": 90000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "mix-04",
+    "lang": "mixed",
+    "today": "2026-10-13",
+    "customers": [],
+    "text": "Mo don san shop rent today, eight hundred thousand naira.",
+    "expected": {
+      "type": "expense",
+      "occurredOn": "2026-10-13",
+      "customerName": null,
+      "total": 800000,
+      "paid": 800000,
+      "balance": 0,
+      "items": [
+        {
+          "name": "shop rent",
+          "qty": null,
+          "amount": 800000
+        }
+      ],
+      "flags": []
+    }
+  },
+  {
+    "id": "mix-05",
+    "lang": "mixed",
+    "today": "2026-10-13",
+    "customers": [
+      "Hajiya Amina"
+    ],
+    "text": "Hajiya Amina take three bags of sugar on credit, sixty thousand naira, ba ta biya komai ba.",
+    "expected": {
+      "type": "sale",
+      "occurredOn": "2026-10-13",
+      "customerName": "Hajiya Amina",
+      "total": 60000,
+      "paid": 0,
+      "balance": 60000,
+      "items": [
+        {
+          "name": "sugar",
+          "qty": 3,
+          "amount": 60000
+        }
+      ],
+      "flags": []
+    }
+  }
+]

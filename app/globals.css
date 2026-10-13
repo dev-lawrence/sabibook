@@ -1,26 +1,81 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* SabiBook: a market trader's exercise book, not a dashboard.
+   Cream paper, brown ink, a red margin rule, green for money in. */
+@theme {
+  --font-sans: var(--font-google-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --color-paper: #f7f0e1;
+  --color-paper-deep: #efe4cc;
+  --color-card: #fffaf0;
+  --color-ink: #2b2118;
+  --color-ink-soft: #6b5a48;
+  --color-rule: #d9c9a8;
+  --color-margin: #c4472f;
+  --color-money: #2f6b3a;
+  --color-money-soft: #dcebd5;
+  --color-owed: #b45309;
+  --color-owed-soft: #fbe6c8;
+  --color-flag: #fff1b8;
+  --color-flag-ink: #8a5a00;
+  --color-record: #c4472f;
+  --color-record-deep: #9c3522;
+
+  --radius-card: 1.25rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+}
+
+/* Faint ruled lines like an exercise book page. */
+.ruled {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2.45rem,
+    var(--color-rule) 2.45rem,
+    var(--color-rule) calc(2.45rem + 1px)
+  );
+}
+
+/* The red margin rule down the left of a page. */
+.margin-rule {
+  box-shadow: inset 3px 0 0 0 var(--color-margin);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.45; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+.record-pulse::before,
+.record-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--color-record);
+  animation: pulse-ring 1.4s ease-out infinite;
+  z-index: -1;
+}
+.record-pulse::after {
+  animation-delay: 0.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .record-pulse::before,
+  .record-pulse::after {
+    animation: none;
+  }
 }

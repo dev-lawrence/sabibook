@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "eval:extract": "tsx scripts/eval-extract.ts"
   },
   "dependencies": {
     "@auth/core": "0.37.0",
