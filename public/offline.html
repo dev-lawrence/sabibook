@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f0e1" />
+    <title>SabiBook - Offline</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+      }
+      body {
+        background: #f7f0e1;
+        color: #2b2118;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        box-sizing: border-box;
+      }
+      main {
+        max-width: 360px;
+        text-align: center;
+      }
+      h1 {
+        font-size: 22px;
+        font-weight: 700;
+        margin: 0 0 12px;
+      }
+      p {
+        font-size: 16px;
+        line-height: 1.5;
+        margin: 0 0 24px;
+      }
+      button {
+        font: inherit;
+        font-size: 16px;
+        font-weight: 600;
+        color: #f7f0e1;
+        background: #2b2118;
+        border: 0;
+        border-radius: 10px;
+        padding: 12px 24px;
+        cursor: pointer;
+      }
+      button:focus-visible {
+        outline: 3px solid #c4472f;
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>You are offline</h1>
+      <p>SabiBook needs a connection to write things down. Your book is safe. Try again when you have network.</p>
+      <button type="button" onclick="location.reload()">Retry</button>
+    </main>
+  </body>
+</html>
