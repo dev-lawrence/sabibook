@@ -180,7 +180,7 @@ function ThisWeek() {
         </div>
       ) : (
         <>
-          <Card ruled margin>
+          <Card margin>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-3">
               <div className="col-span-2">
                 <dt className="text-sm font-semibold text-ink-soft">Total sales</dt>

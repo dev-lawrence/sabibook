@@ -126,7 +126,7 @@ function PaymentSection({
   const parsed = parseAmount(amount);
   const half = Math.round(balance / 2);
   const showHalf = balance >= 2 && half > 0 && half < balance;
-  const firstName = name.trim().split(/\s+/)[0] || "Customer";
+  const spokenName = name.trim() || "Customer";
 
   async function save() {
     if (!parsed || parsed <= 0) {
@@ -196,10 +196,10 @@ function PaymentSection({
       </div>
 
       <div className="flex items-center gap-3 border-t border-rule pt-3">
-        <RecordButton size="compact" hint={`Say: ${firstName} paid 5k`} />
+        <RecordButton size="compact" hint="" />
         <div className="min-w-0 flex-1">
           <p className="text-base font-semibold text-ink">Or just say it</p>
-          <p className="text-sm text-ink-soft">Say: {firstName} paid 5k. You will check it before it saves.</p>
+          <p className="text-sm text-ink-soft">Say “{spokenName} paid 5k”. You will check it before it saves.</p>
         </div>
       </div>
     </Card>

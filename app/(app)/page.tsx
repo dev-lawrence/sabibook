@@ -29,7 +29,7 @@ export default function HomePage() {
         <h1 className="text-3xl font-bold text-ink">Today</h1>
       </header>
 
-      <Card ruled margin>
+      <Card margin>
         <dl className="grid grid-cols-2 gap-x-4 gap-y-3">
           <div>
             <dt className="text-sm font-semibold text-ink-soft">Sales today</dt>
