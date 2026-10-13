@@ -29,7 +29,8 @@ function pickMimeType(): string | undefined {
  * The big record button. Hold to talk and let go to send, or tap once to start
  * and tap again to stop. Uploads the audio and opens the note page.
  */
-export function RecordButton() {
+export function RecordButton({ size = "large", hint }: { size?: "large" | "compact"; hint?: string } = {}) {
+  const compact = size === "compact";
   const router = useRouter();
   const begin = useMutation(api.voiceNotes.begin);
   const attachAudio = useMutation(api.voiceNotes.attachAudio);
@@ -197,7 +198,7 @@ export function RecordButton() {
 
   return (
     <div className="flex flex-col items-center gap-4">
-      <div className="relative isolate flex size-52 items-center justify-center">
+      <div className={`relative isolate flex items-center justify-center ${compact ? "size-28" : "size-52"}`}>
         <button
           type="button"
           aria-label={recording ? "Stop recording" : "Hold to talk"}
@@ -208,17 +209,17 @@ export function RecordButton() {
           onPointerCancel={onPointerUp}
           onContextMenu={(e) => e.preventDefault()}
           onKeyDown={onKeyDown}
-          className={`relative flex size-44 touch-none select-none flex-col items-center justify-center gap-1 rounded-full text-white shadow-[0_6px_0_0_var(--color-record-deep)] transition-transform active:translate-y-1 active:shadow-[0_2px_0_0_var(--color-record-deep)] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-ink ${
+          className={`relative flex ${compact ? "size-24" : "size-44"} touch-none select-none flex-col items-center justify-center gap-1 rounded-full text-white shadow-[0_6px_0_0_var(--color-record-deep)] transition-transform active:translate-y-1 active:shadow-[0_2px_0_0_var(--color-record-deep)] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-ink ${
             recording ? "record-pulse bg-record-deep" : "bg-record"
           } ${phase === "sending" ? "opacity-70" : ""}`}
         >
           {phase === "sending" ? (
-            <Spinner size={44} />
+            <Spinner size={compact ? 28 : 44} />
           ) : (
-            <HugeiconsIcon icon={recording ? StopIcon : Mic01Icon} size={56} />
+            <HugeiconsIcon icon={recording ? StopIcon : Mic01Icon} size={compact ? 32 : 56} />
           )}
-          <span className="tabular text-lg font-bold">
-            {recording ? `0:${String(elapsed).padStart(2, "0")}` : phase === "sending" ? "Sending" : "Hold to talk"}
+          <span className={`tabular font-bold ${compact ? "text-sm" : "text-lg"}`}>
+            {recording ? `0:${String(elapsed).padStart(2, "0")}` : phase === "sending" ? "Sending" : compact ? "Speak" : "Hold to talk"}
           </span>
         </button>
       </div>
@@ -230,7 +231,7 @@ export function RecordButton() {
             ? phase === "sending"
               ? "Sending your voice note"
               : "Opening the microphone"
-            : "Or tap once to start, and tap again to stop."}
+            : (hint ?? "Or tap once to start, and tap again to stop.")}
       </p>
 
       {denied && (
