@@ -2,7 +2,7 @@
 // structures; arithmetic and sanity checks happen here in plain code so a
 // wrong guess is caught before it reaches the books.
 import { z } from "zod";
-import { chat, type LlmConfig } from "./llm";
+import { chat, parseJsonReply, type LlmConfig } from "./llm";
 import { LANGUAGES, type Language } from "./languages";
 import { extractSpokenNumbers, isGrounded } from "./numbers";
 
@@ -324,23 +324,31 @@ export async function extractEntry(
   config: LlmConfig,
   input: { transcript: string; customers: string[]; language: Language; today: string },
 ): Promise<{ entry: ExtractedEntry; ms: number; raw: ModelOutput }> {
-  const { content, ms } = await chat(config, buildMessages(input), {
-    jsonSchema: { name: "ledger_entry", schema: modelOutputJsonSchema },
-  });
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(content);
-  } catch {
-    throw new Error(`Model did not return JSON: ${content.slice(0, 200)}`);
+  const messages = buildMessages(input);
+  const ask = () =>
+    chat(config, messages, { jsonSchema: { name: "ledger_entry", schema: modelOutputJsonSchema } });
+
+  // Without server-side constraints a reply can be malformed; one retry
+  // fixes most of those. Validation is the same either way.
+  let totalMs = 0;
+  let lastError: unknown;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const { content, ms } = await ask();
+    totalMs += ms;
+    try {
+      const raw = modelOutputSchema.parse(parseJsonReply(content));
+      return {
+        entry: postProcess(raw, {
+          transcript: input.transcript,
+          today: input.today,
+          customers: input.customers,
+        }),
+        ms: totalMs,
+        raw,
+      };
+    } catch (err) {
+      lastError = err;
+    }
   }
-  const raw = modelOutputSchema.parse(parsed);
-  return {
-    entry: postProcess(raw, {
-      transcript: input.transcript,
-      today: input.today,
-      customers: input.customers,
-    }),
-    ms,
-    raw,
-  };
+  throw lastError instanceof Error ? lastError : new Error("Model reply did not match the schema");
 }
