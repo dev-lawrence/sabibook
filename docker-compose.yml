@@ -1,0 +1,116 @@
+# SabiBook local inference stack.
+#
+# docker compose up -d                       starts inference (Ollama LLM + Speaches ASR)
+# docker compose --profile selfhost up -d    adds a self-hosted Convex backend and dashboard
+# Admin key for self-hosted Convex:          docker compose exec convex-backend ./generate_admin_key.sh
+#
+# When Convex runs inside Docker, set these on the Convex deployment (pnpm exec convex env set):
+#   ASR_BASE_URL=http://speaches:8000/v1
+#   LLM_BASE_URL=http://ollama:11434/v1
+# When Convex runs on the host (e.g. `npx convex dev` against cloud), use localhost instead:
+#   ASR_BASE_URL=http://localhost:8000/v1
+#   LLM_BASE_URL=http://localhost:11434/v1
+
+services:
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    environment:
+      # Keep Gemma loaded between notes so a trader never waits for a cold start.
+      OLLAMA_KEEP_ALIVE: 24h
+    healthcheck:
+      test: ["CMD", "ollama", "list"]
+      interval: 10s
+      timeout: 10s
+      retries: 30
+    restart: unless-stopped
+    # To enable NVIDIA GPU, uncomment (requires the NVIDIA Container Toolkit on the host):
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [gpu]
+
+  ollama-pull:
+    image: ollama/ollama:latest
+    depends_on:
+      ollama:
+        condition: service_healthy
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["ollama"]
+    command: ["pull", "${LLM_MODEL:-gemma4:e4b}"]
+    restart: "no"
+
+  speaches:
+    # Speaches is the maintained successor of faster-whisper-server.
+    # For GPU, swap to ghcr.io/speaches-ai/speaches:latest-cuda and add the NVIDIA reservation block from ollama.
+    image: ghcr.io/speaches-ai/speaches:latest-cpu
+    ports:
+      - "8000:8000"
+    volumes:
+      - hf-hub-cache:/home/ubuntu/.cache/huggingface/hub
+    healthcheck:
+      # Python is always in the Speaches image; curl may not be.
+      test: ["CMD", "python3", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
+      interval: 10s
+      retries: 30
+    restart: unless-stopped
+
+  speaches-models:
+    # One-shot: asks Speaches to download the ASR models (POST /v1/models/{model_id}).
+    image: curlimages/curl:latest
+    depends_on:
+      speaches:
+        condition: service_healthy
+    entrypoint: ["sh", "-c"]
+    command:
+      - >
+        set -e;
+        curl -fsS -X POST http://speaches:8000/v1/models/${ASR_MODEL:-deepdml/faster-whisper-large-v3-turbo-ct2};
+        if [ -n "${ASR_MODEL_NAIJA:-}" ]; then
+        curl -fsS -X POST http://speaches:8000/v1/models/${ASR_MODEL_NAIJA};
+        fi
+    restart: "no"
+
+  convex-backend:
+    # Optional: only starts with `--profile selfhost`.
+    profiles: ["selfhost"]
+    image: ghcr.io/get-convex/convex-backend:latest
+    ports:
+      - "3210:3210"
+      - "3211:3211"
+    volumes:
+      - convex-data:/convex/data
+    environment:
+      CONVEX_CLOUD_ORIGIN: http://127.0.0.1:3210
+      CONVEX_SITE_ORIGIN: http://127.0.0.1:3211
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3210/version"]
+      interval: 10s
+      timeout: 5s
+      retries: 30
+    restart: unless-stopped
+
+  convex-dashboard:
+    # Optional: only starts with `--profile selfhost`.
+    profiles: ["selfhost"]
+    image: ghcr.io/get-convex/convex-dashboard:latest
+    ports:
+      - "6791:6791"
+    environment:
+      NEXT_PUBLIC_DEPLOYMENT_URL: http://127.0.0.1:3210
+    depends_on:
+      convex-backend:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  ollama:
+  hf-hub-cache:
+  convex-data:
