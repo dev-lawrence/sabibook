@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Doc } from "@/convex/_generated/dataModel";
 import { MoneyFigure } from "@/components/ui/MoneyFigure";
 import { ENTRY_TYPE_LABEL, formatNaira, isMoneyIn, summariseItems } from "@/lib/format";
@@ -8,11 +9,11 @@ type EntryLike = Pick<Doc<"entries">, "type" | "items" | "total" | "balance" | "
 };
 
 /** One line of the ledger: type, who, what, amount, and an amber badge if money is still owed. */
-export function EntryRow({ entry, showDate }: { entry: EntryLike; showDate?: boolean }) {
+export function EntryRow({ entry, showDate, href }: { entry: EntryLike; showDate?: boolean; href?: string }) {
   const detail = summariseItems(entry.items);
   const owed = entry.balance !== null && entry.balance > 0;
-  return (
-    <li className="flex items-start justify-between gap-3 border-b border-rule py-3 last:border-b-0">
+  const content = (
+    <>
       <div className="min-w-0">
         <p className="text-sm font-semibold text-ink-soft">
           {ENTRY_TYPE_LABEL[entry.type]}
@@ -29,6 +30,17 @@ export function EntryRow({ entry, showDate }: { entry: EntryLike; showDate?: boo
           </span>
         )}
       </div>
+    </>
+  );
+  return (
+    <li className="border-b border-rule last:border-b-0">
+      {href ? (
+        <Link href={href} className="flex min-h-14 items-start justify-between gap-3 py-3 active:bg-paper-deep">
+          {content}
+        </Link>
+      ) : (
+        <div className="flex items-start justify-between gap-3 py-3">{content}</div>
+      )}
     </li>
   );
 }
