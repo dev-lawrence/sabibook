@@ -8,7 +8,7 @@ A trader in Balogun market holds one big button and says:
 
 A few seconds later a card appears. It reads Sale, Mama Ngozi, 3 bags of rice, ₦45,000 total, ₦35,000 paid, ₦10,000 still owed, note "will pay balance tomorrow". She taps Save. Mama Ngozi now shows up on the Debtors screen with ₦10,000 next to her name. When it's time to collect, SabiBook writes a polite reminder in English or Pidgin and opens WhatsApp with it.
 
-Everything that touches her words runs on open weight models you can host yourself. Speech goes through Whisper and NaijaVox on a faster-whisper server. Gemma 4 turns the transcript into the ledger entry.
+Everything that touches her words runs on open weight models you can host yourself. Speech goes through Whisper on a faster-whisper server. Gemma 4 turns the transcript into the ledger entry. A Nigerian-language speech model (NaijaVox) can be plugged in as an optional extra, but it is not part of the tested setup.
 
 Built for the DEV Hacktoberfest Open Source AI Challenge, week 2 (Side Hustle).
 
@@ -59,7 +59,7 @@ flowchart TD
     T[Type it instead] -->|voiceNotes.submitText| C
     C -->|scheduler.runAfter| D["Internal action (Node runtime)<br/>pipeline.processNote"]
     D -->|reads audio| B
-    D -->|/v1/audio/transcriptions| E[Speaches<br/>faster-whisper: Whisper large v3 turbo,<br/>NaijaVox 2.0 for Naija languages]
+    D -->|/v1/audio/transcriptions| E[Speaches<br/>faster-whisper: Whisper large v3 turbo,<br/>optional Naija track (NaijaVox, untested here)]
     D -->|/v1/chat/completions + JSON schema| F[Ollama<br/>Gemma 4 E4B]
     D --> G[Deterministic checks<br/>balance, heard amounts,<br/>item sums, credit without name]
     G -->|one internal mutation| H[(voiceNote + draft entry)]
@@ -73,7 +73,7 @@ A few decisions behind that picture:
 - **One write at the end.** The action writes the transcript, timings and draft entry in a single internal mutation, so a half-processed note never shows up in the book. A separate small status update after speech recognition is the only other write. It exists so the screen can say "Writing it down" while Gemma works.
 - **Totals are kept, not counted.** Confirming an entry updates a `dailyTotals` row, the customer's balance and the trader's "owed to you" figure in the same transaction. The home screen reads three numbers instead of scanning the ledger. Deleting an entry reverses the same three updates.
 - **Customer names go to both models.** Whisper gets them as its initial prompt so it spells "Chiamaka" the way the trader saved it. Gemma gets them so it reuses the existing customer instead of creating "Mama Ngozi" twice.
-- **Inference is four env vars.** `ASR_BASE_URL`, `ASR_MODEL`, `LLM_BASE_URL` and `LLM_MODEL` point at any OpenAI compatible server, local or hosted. An optional `ASR_MODEL_NAIJA` routes Pidgin, Yoruba, Hausa and Igbo to NaijaVox.
+- **Inference is four env vars.** `ASR_BASE_URL`, `ASR_MODEL`, `LLM_BASE_URL` and `LLM_MODEL` point at any OpenAI compatible server, local or hosted. An optional `ASR_MODEL_NAIJA` routes Pidgin, Yoruba, Hausa and Igbo to a second speech model such as NaijaVox. It is untested here. If it is unset, those languages use `ASR_MODEL`, the same Whisper model as English.
 
 ## Models
 
@@ -81,20 +81,20 @@ A few decisions behind that picture:
 | --- | --- | --- | --- |
 | Speech, English | Whisper large v3 turbo (`deepdml/faster-whisper-large-v3-turbo-ct2`) | Fast and accurate on accented English | MIT |
 | Speech, English (challenger) | Distil-Whisper large v3 (`Systran/faster-distil-whisper-large-v3`) | Smaller and faster, English only | MIT |
-| Speech, Naija languages | NaijaVox 2.0 by Axiveri, converted to CTranslate2 | Whisper large v3 fine-tuned on Yoruba, Hausa, Igbo, Pidgin and Nigerian English | Apache 2.0 |
+| Speech, Naija languages (optional, untested) | NaijaVox 2.0 by Axiveri, converted to CTranslate2 | Described by its authors as Whisper large v3 fine-tuned on Yoruba, Hausa, Igbo, Pidgin and Nigerian English. Never installed or run in this repo | Apache 2.0 |
 | Speech (experimental) | Gemma 4 E4B native audio | One model for listening and understanding | Gemma licence |
 | Extraction and reminders | Gemma 4 E4B (`gemma4:e4b` on Ollama) | Small enough for a laptop, follows a JSON schema | Gemma licence |
 
 The speech server is [Speaches](https://github.com/speaches-ai/speaches), the maintained successor of the project formerly called faster-whisper-server. It exposes the OpenAI `/v1/audio/transcriptions` endpoint, so there's no custom Python in this repo.
 
-NaijaVox adds `<|pcm|>` and `<|ig|>` language tokens that faster-whisper doesn't know about. SabiBook sends no language code for Pidgin and Igbo and lets the model detect the language. `scripts/convert-naijavox.sh` converts the model with `ct2-transformers-converter` inside Docker.
+The Naija track is optional and not part of the tested setup. Nobody has installed or run NaijaVox here, so this repo makes no claim that it works. `scripts/convert-naijavox.sh` is an untested conversion script (`ct2-transformers-converter` inside Docker). NaijaVox is reported to add `<|pcm|>` and `<|ig|>` language tokens that faster-whisper may not know about, which is why SabiBook sends no language code for Pidgin and Igbo and leaves language detection to the model.
 
 ## Run it fully local
 
 You need Node 20+, pnpm and Docker. A GPU helps a lot but isn't required.
 
 ```bash
-git clone https://github.com/<you>/sabibook && cd sabibook
+git clone https://github.com/dev-lawrence/sabibook && cd sabibook
 pnpm install
 
 # 1. Inference: Ollama pulls gemma4:e4b, Speaches downloads Whisper turbo.
@@ -133,7 +133,7 @@ docker compose exec convex-backend ./generate_admin_key.sh
 
 When Convex runs inside Docker, point it at the other containers by service name: `ASR_BASE_URL=http://speaches:8000/v1` and `LLM_BASE_URL=http://ollama:11434/v1`.
 
-For Pidgin, Yoruba, Hausa and Igbo, run `scripts/convert-naijavox.sh`, push the result to your own Hugging Face repo, and set `ASR_MODEL_NAIJA`. The script prints the exact commands.
+Optional and untested: for Pidgin, Yoruba, Hausa and Igbo you can try `scripts/convert-naijavox.sh`, push the result to your own Hugging Face repo, and set `ASR_MODEL_NAIJA`. The script prints the exact commands. Without it, those languages run on Whisper large v3 turbo.
 
 Every variable is documented in `.env.example`.
 
@@ -151,7 +151,7 @@ pnpm eval:asr       # word error rate, amount accuracy and latency, per ASR mode
 - `eval/audio/` holds real recordings with `.txt` reference transcripts. `eval:asr` reports WER per model and per language. It also reports "numbers correct", the share of clips where the amounts heard match the reference. A transcript can have a fine WER and still turn "fifteen" into "fifty", and for a ledger that's the error that matters.
 - Results land in `eval/results.md`, with raw JSON in `eval/results/`. The speech (ASR) section of `eval/results.md` is empty for now, so no WER or numbers-correct figures are recorded yet.
 
-The candidate speech models are Whisper large v3 turbo and Distil large v3 for English, NaijaVox 2.0 for the Nigerian languages, and Gemma 4 E4B with native audio as an experimental challenger. Ollama's OpenAI endpoint may not accept audio input yet, so the challenger runs against any server that does (`GEMMA_AUDIO_BASE_URL`, for example llama.cpp's server). If none is set, the harness says so instead of pretending.
+The candidate speech models are Whisper large v3 turbo and Distil large v3 for English, NaijaVox 2.0 for the Nigerian languages (optional, never run here), and Gemma 4 E4B with native audio as an experimental challenger. Ollama's OpenAI endpoint may not accept audio input yet, so the challenger runs against any server that does (`GEMMA_AUDIO_BASE_URL`, for example llama.cpp's server). If none is set, the harness says so instead of pretending.
 
 ## Why open models matter here
 
@@ -159,7 +159,7 @@ A trader's book is private. It says who is broke, who is a regular, and how much
 
 With open weights the whole stack runs on hardware you choose: a laptop in the shop, a small server at a cooperative, a box in a Lagos data centre. The data stays with models you run yourself. There's also no per-request bill. A paid API that costs a few naira per sentence sounds cheap until a trader records eighty sentences on a busy Saturday and the margin on a crate of eggs is a few hundred naira.
 
-Open weights are also why this works in Nigeria at all. Big speech models were never trained much on Pidgin, Hausa, Yoruba or Igbo. NaijaVox exists because someone could take Whisper's open weights and fine-tune them on Nigerian speech. SabiBook gets to use that work, and anyone can improve on it with their own recordings. A closed model would leave Igbo at whatever quality the vendor decided was good enough.
+Open weights are also why this works in Nigeria at all. Big speech models were never trained much on Pidgin, Hausa, Yoruba or Igbo. NaijaVox is an example of someone taking Whisper's open weights and fine-tuning them on Nigerian speech. SabiBook can be pointed at models like it, and anyone can improve on them with their own recordings. A closed model would leave Igbo at whatever quality the vendor decided was good enough.
 
 ## Project layout
 
@@ -173,12 +173,13 @@ components/          RecordButton, DraftCard, EntryRow and a small UI kit
 convex/              backend: thin query, mutation and action wrappers
   model/             plain TypeScript: extraction, number grounding, ledger maths, ASR and LLM clients
 eval/                cases, recordings, results
-scripts/             eval runners, NaijaVox conversion
+scripts/             eval runners, optional NaijaVox conversion (untested)
 docker-compose.yml   Ollama, Speaches, optional self-hosted Convex
 ```
 
 ## Known limits
 
+- The Naija speech track (NaijaVox) is optional and was never installed or tested here. Pidgin, Yoruba, Hausa and Igbo are transcribed by the default Whisper model unless you set `ASR_MODEL_NAIJA` yourself.
 - Yoruba, Hausa and Igbo are beta. Word error rate and extraction accuracy for these languages have not been measured in this repo yet. Check every draft.
 - One sentence makes one entry. "I sold rice to Ngozi and Emeka paid me 5k" should become two entries, and today it becomes one.
 - Debts are tracked per customer, not per sale. A payment reduces the customer's balance rather than settling a specific invoice.
