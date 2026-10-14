@@ -91,7 +91,7 @@ The Naija track is optional and not part of the tested setup. Nobody has install
 
 ## Run it fully local
 
-You need Node 20+, pnpm and Docker. A GPU helps a lot but isn't required.
+You need Node 20+ and pnpm. The Docker route below is not yet tested end to end. I ran the same stack natively on macOS, with Ollama and Speaches installed directly, so that is the path that has been checked. A GPU helps a lot but isn't required.
 
 ```bash
 git clone https://github.com/dev-lawrence/sabibook && cd sabibook
@@ -123,7 +123,7 @@ pnpm dev
 
 Open http://localhost:3000 and tap "Try the demo".
 
-To keep even the database on your own machine, run the self-hosted Convex backend from the same compose file:
+To keep even the database on your own machine, run the self-hosted Convex backend from the same compose file (untested, like the Docker route above):
 
 ```bash
 docker compose --profile selfhost up -d
