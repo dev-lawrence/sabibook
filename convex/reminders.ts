@@ -49,6 +49,9 @@ export const draft = action({
     const { content } = await chat(llmConfigFromEnv(), buildReminderMessages(info), {
       maxTokens: 300,
     });
-    return { message: cleanReminder(content), phone: info.phone };
+    const message = cleanReminder(content);
+    // An empty reply would leave the editor blank, so fail and let the trader retry.
+    if (!message) throw new ConvexError("We could not write the message just now. Please try again.");
+    return { message, phone: info.phone };
   },
 });

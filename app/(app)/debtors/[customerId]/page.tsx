@@ -195,12 +195,12 @@ function PaymentSection({
         )}
       </div>
 
-      <div className="flex items-center gap-3 border-t border-rule pt-3">
-        <RecordButton size="compact" hint="" />
-        <div className="min-w-0 flex-1">
+      <div className="flex flex-col items-center gap-4 border-t border-rule pt-4 text-center">
+        <div>
           <p className="text-base font-semibold text-ink">Or just say it</p>
           <p className="text-sm text-ink-soft">Say “{spokenName} paid 5k”. You will check it before it saves.</p>
         </div>
+        <RecordButton size="compact" hint="" />
       </div>
     </Card>
   );

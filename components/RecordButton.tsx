@@ -240,7 +240,10 @@ export function RecordButton({ size = "large", hint }: { size?: "large" | "compa
         </button>
       </div>
 
-      <p className="min-h-6 text-center text-base text-ink-soft" aria-live="polite">
+      <p
+        className={`text-center text-base text-ink-soft ${recording || busy || hint !== "" ? "min-h-6" : ""}`}
+        aria-live="polite"
+      >
         {recording
           ? "Listening. Let go, or tap again, when you are done."
           : busy

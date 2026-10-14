@@ -48,6 +48,9 @@ export async function chat(
       messages: prompted,
       temperature: 0,
       max_tokens: options.maxTokens ?? 800,
+      // Gemma 4 on Ollama thinks before it answers by default. That hidden
+      // thinking uses up max_tokens, so the reply comes back empty or cut off.
+      reasoning_effort: "none",
       ...(constrained
         ? {
             response_format: {
