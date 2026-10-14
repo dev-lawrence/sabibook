@@ -104,6 +104,8 @@ docker compose up -d
 pnpm exec convex dev
 ```
 
+The first Speaches request after a cold start takes about 12.7 s, and about 3.6 s once warm.
+
 Leave `convex dev` running. In a second terminal, set the deployment's env vars once:
 
 ```bash
@@ -147,7 +149,7 @@ pnpm eval:asr       # word error rate, amount accuracy and latency, per ASR mode
 - `eval/cases.json` has 40 sentences in the way traders talk: 25 English, 10 Pidgin and 5 mixed. Each has the expected entry. The set includes hard cases on purpose: no amount said, credit with no name, items that don't add up, a customer who overpaid.
 - `eval:extract` scores type, date, customer, total, paid, balance, items and flags separately. It also reports how often every field is right at once, per language, plus median and p90 latency. Set `EVAL_LLM_MODELS=gemma4:e4b,gemma4:e2b` to compare models.
 - `eval/audio/` holds real recordings with `.txt` reference transcripts. `eval:asr` reports WER per model and per language. It also reports "numbers correct", the share of clips where the amounts heard match the reference. A transcript can have a fine WER and still turn "fifteen" into "fifty", and for a ledger that's the error that matters.
-- Results land in `eval/results.md`, with raw JSON in `eval/results/`.
+- Results land in `eval/results.md`, with raw JSON in `eval/results/`. The speech (ASR) section of `eval/results.md` is empty for now, so no WER or numbers-correct figures are recorded yet.
 
 The candidate speech models are Whisper large v3 turbo and Distil large v3 for English, NaijaVox 2.0 for the Nigerian languages, and Gemma 4 E4B with native audio as an experimental challenger. Ollama's OpenAI endpoint may not accept audio input yet, so the challenger runs against any server that does (`GEMMA_AUDIO_BASE_URL`, for example llama.cpp's server). If none is set, the harness says so instead of pretending.
 
@@ -177,7 +179,7 @@ docker-compose.yml   Ollama, Speaches, optional self-hosted Convex
 
 ## Known limits
 
-- Yoruba, Hausa and Igbo are beta. NaijaVox reports a 22% average word error rate across its test sets, and extraction quality in those languages depends on Gemma's understanding of them. Check every draft.
+- Yoruba, Hausa and Igbo are beta. Word error rate and extraction accuracy for these languages have not been measured in this repo yet. Check every draft.
 - One sentence makes one entry. "I sold rice to Ngozi and Emeka paid me 5k" should become two entries, and today it becomes one.
 - Debts are tracked per customer, not per sale. A payment reduces the customer's balance rather than settling a specific invoice.
 - Receipts are public to anyone with the link. The token is random, but treat links like you'd treat a photo of a receipt.
