@@ -111,6 +111,8 @@ export const discard = mutation({
     const userId = await requireUserId(ctx);
     const entry = await getOwnedEntry(ctx, userId, entryId);
     if (entry.status !== "draft") throw new ConvexError("Saved entries must be removed, not discarded.");
+    // Drop the note's pointer too, or its page keeps loading the deleted draft.
+    if (entry.voiceNoteId) await ctx.db.patch("voiceNotes", entry.voiceNoteId, { entryId: undefined });
     await ctx.db.delete("entries", entry._id);
   },
 });
