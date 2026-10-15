@@ -43,3 +43,8 @@ next-env.d.ts
 
 # converted ASR models
 /models
+
+# Remotion demo video
+/video/node_modules
+/video/out
+/video/.remotion
