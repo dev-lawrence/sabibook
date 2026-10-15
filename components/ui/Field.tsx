@@ -3,9 +3,9 @@ import type { InputHTMLAttributes, ReactNode } from "react";
 /** Shared look for inputs, textareas and selects. Flagged fields turn yellow. */
 export function fieldClass(flagged?: boolean): string {
   return (
-    "min-h-14 w-full rounded-xl border-2 px-4 py-3 text-lg text-ink placeholder:text-ink-soft/70 " +
+    "min-h-14 w-full rounded-xl border px-4 transition-colors duration-150 py-3 text-lg text-ink placeholder:text-ink-soft/70 " +
     "focus:outline-3 focus:outline-offset-1 focus:outline-ink " +
-    (flagged ? "border-flag-ink bg-flag" : "border-rule bg-card")
+    (flagged ? "border-flag-ink/60 bg-flag" : "border-rule bg-card")
   );
 }
 

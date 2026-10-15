@@ -5,12 +5,12 @@ export type ButtonVariant = "primary" | "secondary" | "ghost" | "danger";
 
 const base =
   "inline-flex min-h-14 items-center justify-center gap-2 rounded-2xl px-5 text-lg font-semibold " +
-  "transition-colors active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 " +
+  "transition-[background-color,transform] duration-150 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 " +
   "focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-ink";
 
 const variants: Record<ButtonVariant, string> = {
   primary: "bg-money text-white hover:bg-money/90",
-  secondary: "border-2 border-ink bg-card text-ink hover:bg-paper-deep",
+  secondary: "border border-rule bg-card text-ink hover:bg-paper-deep",
   ghost: "text-ink-soft hover:bg-paper-deep",
   danger: "text-owed hover:bg-owed-soft",
 };

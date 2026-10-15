@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { useQuery, usePaginatedQuery } from "convex/react";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
@@ -21,7 +21,7 @@ export default function LedgerPage() {
   const [tab, setTab] = useState<Tab>("day");
   return (
     <main className="flex flex-col gap-5 pt-2">
-      <h1 className="text-3xl font-bold text-ink">Ledger</h1>
+      <h1 className="text-3xl font-semibold tracking-[-0.03em] text-ink">Ledger</h1>
       <div role="tablist" aria-label="Ledger view" className="grid grid-cols-2 gap-1 rounded-2xl bg-paper-deep p-1">
         {(
           [
@@ -35,8 +35,8 @@ export default function LedgerPage() {
             role="tab"
             aria-selected={tab === key}
             onClick={() => setTab(key)}
-            className={`min-h-14 rounded-xl text-lg font-bold transition-colors ${
-              tab === key ? "bg-card text-ink shadow-sm" : "text-ink-soft"
+            className={`min-h-14 rounded-xl text-lg font-semibold transition-colors duration-150 ${
+              tab === key ? "bg-card text-ink" : "text-ink-soft"
             }`}
           >
             {label}
@@ -91,19 +91,24 @@ function ByDay() {
 
   return (
     <div className="flex flex-col gap-5">
-      {days.map((day) => {
+      {days.map((day, i) => {
         const inSum = day.entries.reduce((s, e) => s + moneyIn(e), 0);
         const outSum = day.entries.reduce((s, e) => s + moneyOut(e), 0);
         return (
-          <section key={day.date} aria-label={formatDayLabel(day.date)}>
+          <section
+            key={day.date}
+            aria-label={formatDayLabel(day.date)}
+            className="enter"
+            style={{ "--i": i } as CSSProperties}
+          >
             <div className="sticky top-0 z-10 flex items-baseline justify-between gap-3 bg-paper py-2">
-              <h2 className="text-lg font-bold text-ink">{formatDayLabel(day.date)}</h2>
+              <h2 className="text-lg font-semibold tracking-[-0.02em] text-ink">{formatDayLabel(day.date)}</h2>
               <p className="tabular text-sm font-semibold">
                 <span className="text-money">In {formatNaira(inSum)}</span>
                 <span className="text-ink-soft">{"  "}Out {formatNaira(outSum)}</span>
               </p>
             </div>
-            <Card margin className="py-1">
+            <Card className="py-1">
               <ul>
                 {day.entries.map((e) => (
                   <EntryRow key={e._id} entry={e} href={`/entry/${e._id}`} />
@@ -156,11 +161,11 @@ function ThisWeek() {
           type="button"
           aria-label="Earlier week"
           onClick={() => setOffset((o) => o + 1)}
-          className="flex size-14 items-center justify-center rounded-2xl border-2 border-ink bg-card text-ink active:bg-paper-deep"
+          className="flex size-14 items-center justify-center rounded-2xl border border-rule bg-card text-ink transition-colors duration-150 hover:bg-paper-deep active:bg-paper-deep"
         >
           <HugeiconsIcon icon={ArrowLeft01Icon} size={26} />
         </button>
-        <p className="text-center text-base font-bold text-ink">
+        <p className="text-center text-base font-semibold text-ink">
           {offset === 0 ? "Last 7 days" : `${formatDayLabel(from)} to ${formatDayLabel(to)}`}
         </p>
         <button
@@ -168,7 +173,7 @@ function ThisWeek() {
           aria-label="Later week"
           disabled={offset === 0}
           onClick={() => setOffset((o) => Math.max(0, o - 1))}
-          className="flex size-14 items-center justify-center rounded-2xl border-2 border-ink bg-card text-ink active:bg-paper-deep disabled:opacity-30"
+          className="flex size-14 items-center justify-center rounded-2xl border border-rule bg-card text-ink transition-colors duration-150 hover:bg-paper-deep active:bg-paper-deep disabled:opacity-30"
         >
           <HugeiconsIcon icon={ArrowRight01Icon} size={26} />
         </button>
@@ -180,7 +185,7 @@ function ThisWeek() {
         </div>
       ) : (
         <>
-          <Card margin>
+          <Card>
             <dl className="grid grid-cols-2 gap-x-4 gap-y-3">
               <div className="col-span-2">
                 <dt className="text-sm font-semibold text-ink-soft">Total sales</dt>
@@ -202,7 +207,7 @@ function ThisWeek() {
               </div>
               <div className="col-span-2 border-t border-rule pt-3">
                 <dt className="text-sm font-semibold text-ink-soft">Best day</dt>
-                <dd className="text-lg font-bold text-ink">
+                <dd className="text-lg font-semibold text-ink">
                   {best.sales > 0 ? `${formatDayLabel(best.date)}, ${formatNaira(best.sales)}` : "No sales yet"}
                 </dd>
               </div>
@@ -241,10 +246,10 @@ function Bar({ value, max, color, thick }: { value: number; max: number; color: 
   return (
     <div className="flex items-center gap-2">
       <div className="flex-1">
-        <div className={`${color} ${thick ? "h-4" : "h-2"} rounded-full`} style={{ width: `${pct}%` }} />
+        <div className={`${color} ${thick ? "h-4" : "h-2"} rounded-full transition-[width] duration-300 ease-out`} style={{ width: `${pct}%` }} />
       </div>
       <span
-        className={`tabular w-24 shrink-0 text-right ${thick ? "text-base font-bold text-ink" : "text-sm font-semibold text-owed"}`}
+        className={`tabular w-24 shrink-0 text-right ${thick ? "text-base font-semibold text-ink" : "text-sm font-semibold text-owed"}`}
       >
         {formatNaira(value)}
       </span>

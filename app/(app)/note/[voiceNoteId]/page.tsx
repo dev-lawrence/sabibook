@@ -18,7 +18,7 @@ function Step({ label, state }: { label: string; state: StepState }) {
   return (
     <li className="flex items-center gap-3 py-1.5" aria-current={state === "active" ? "step" : undefined}>
       <span
-        className={`flex size-8 shrink-0 items-center justify-center rounded-full border-2 ${
+        className={`flex size-8 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 ${
           state === "done"
             ? "border-money bg-money text-white"
             : state === "active"
@@ -26,9 +26,17 @@ function Step({ label, state }: { label: string; state: StepState }) {
               : "border-rule text-rule"
         }`}
       >
-        {state === "done" ? <HugeiconsIcon icon={Tick02Icon} size={18} /> : state === "active" ? <Spinner size={16} /> : null}
+        {state === "done" ? (
+          <HugeiconsIcon icon={Tick02Icon} size={18} className="pop-in" />
+        ) : state === "active" ? (
+          <span className="pop-in flex">
+            <Spinner size={16} />
+          </span>
+        ) : null}
       </span>
-      <span className={`text-lg ${state === "waiting" ? "text-ink-soft" : "font-semibold text-ink"}`}>{label}</span>
+      <span
+        className={`text-lg transition-colors duration-300 ${state === "waiting" ? "text-ink-soft" : "font-semibold text-ink"}`}
+      >{label}</span>
     </li>
   );
 }
@@ -77,7 +85,7 @@ export default function NotePage(props: PageProps<"/note/[voiceNoteId]">) {
       />
 
       {note.status !== "ready" && (
-        <Card>
+        <Card className="enter">
           <ol>
             {isVoice && <Step label="Listening" state={stateOf(0)} />}
             <Step label="Writing it down" state={isVoice ? stateOf(1) : failed ? "waiting" : "active"} />

@@ -63,21 +63,21 @@ export default function DebtorPage({ params }: { params: Promise<{ customerId: s
     <main className="flex flex-col gap-6">
       <PageHeader title={customer.name} backHref="/debtors" />
 
-      <Card margin>
+      <Card>
         {balance > 0 ? (
           <div>
-            <p className="text-base font-semibold text-ink-soft">Owes you</p>
-            <MoneyFigure amount={balance} tone="owed" className="text-5xl" />
+            <p className="text-sm font-medium text-ink-soft">Owes you</p>
+            <MoneyFigure amount={balance} tone="owed" size="xl" className="mt-1 block" />
           </div>
         ) : balance === 0 ? (
-          <p className="flex items-center gap-2 text-3xl font-bold text-money">
+          <p className="flex items-center gap-2 text-3xl font-semibold tracking-[-0.02em] text-money">
             <HugeiconsIcon icon={CheckmarkCircle02Icon} size={32} />
             All settled
           </p>
         ) : (
           <div>
             <p className="text-base font-semibold text-ink-soft">You owe them</p>
-            <MoneyFigure amount={-balance} tone="ink" className="text-5xl" />
+            <MoneyFigure amount={-balance} tone="ink" size="xl" className="mt-1 block" />
           </div>
         )}
       </Card>
@@ -87,7 +87,7 @@ export default function DebtorPage({ params }: { params: Promise<{ customerId: s
       <PhoneSection customerId={customerId} phone={customer.phone ?? null} />
 
       <section className="flex flex-col gap-2">
-        <h2 className="text-xl font-bold text-ink">History</h2>
+        <h2 className="text-xl font-semibold tracking-[-0.02em] text-ink">History</h2>
         {entries === undefined ? (
           <div className="py-6 text-center">
             <StatusDots label="Loading history" />
@@ -95,10 +95,10 @@ export default function DebtorPage({ params }: { params: Promise<{ customerId: s
         ) : entries.length === 0 ? (
           <p className="text-base text-ink-soft">Nothing written for this customer yet.</p>
         ) : (
-          <Card margin className="py-0">
+          <Card className="py-0">
             <ul>
-              {entries.map((e) => (
-                <EntryRow key={e._id} entry={e} showDate href={`/entry/${e._id}`} />
+              {entries.map((e, i) => (
+                <EntryRow key={e._id} entry={e} index={i} showDate href={`/entry/${e._id}`} />
               ))}
             </ul>
           </Card>
@@ -149,7 +149,7 @@ function PaymentSection({
 
   return (
     <Card className="flex flex-col gap-4">
-      <h2 className="text-xl font-bold text-ink">Record payment</h2>
+      <h2 className="text-xl font-semibold tracking-[-0.02em] text-ink">Record payment</h2>
 
       <div className="flex flex-col gap-3">
         <Field label="Amount paid" htmlFor="pay-amount" flag={error}>
@@ -169,7 +169,7 @@ function PaymentSection({
           <button
             type="button"
             onClick={() => setAmount(String(balance))}
-            className="min-h-12 rounded-full border-2 border-ink bg-card px-4 text-base font-bold text-ink active:bg-paper-deep"
+            className="min-h-12 rounded-full border border-rule bg-card px-4 text-base font-semibold text-ink transition-colors duration-150 hover:bg-paper-deep active:bg-paper-deep"
           >
             Full {formatNaira(balance)}
           </button>
@@ -177,7 +177,7 @@ function PaymentSection({
             <button
               type="button"
               onClick={() => setAmount(String(half))}
-              className="min-h-12 rounded-full border-2 border-ink bg-card px-4 text-base font-bold text-ink active:bg-paper-deep"
+              className="min-h-12 rounded-full border border-rule bg-card px-4 text-base font-semibold text-ink transition-colors duration-150 hover:bg-paper-deep active:bg-paper-deep"
             >
               Half {formatNaira(half)}
             </button>
@@ -188,8 +188,8 @@ function PaymentSection({
           Save payment
         </Button>
         {saved !== null && (
-          <p role="status" className="flex items-center gap-2 rounded-xl bg-money-soft px-4 py-3 text-base font-semibold text-money">
-            <HugeiconsIcon icon={CheckmarkCircle02Icon} size={22} />
+          <p role="status" className="enter flex items-center gap-2 rounded-xl bg-money-soft px-4 py-3 text-base font-semibold text-money">
+            <HugeiconsIcon icon={CheckmarkCircle02Icon} size={22} className="pop-in" />
             Saved. {formatNaira(saved)} received.
           </p>
         )}
@@ -245,7 +245,7 @@ function ReminderSection({ customerId, phone }: { customerId: Id<"customers">; p
 
   return (
     <Card className="flex flex-col gap-3">
-      <h2 className="text-xl font-bold text-ink">Send reminder</h2>
+      <h2 className="text-xl font-semibold tracking-[-0.02em] text-ink">Send reminder</h2>
 
       {loading ? (
         <p role="status" className="flex items-center gap-3 py-3 text-lg text-ink-soft">
@@ -326,7 +326,7 @@ function PhoneSection({ customerId, phone }: { customerId: Id<"customers">; phon
       <Card className="flex items-center justify-between gap-3">
         <div className="min-w-0">
           <p className="text-sm font-semibold text-ink-soft">WhatsApp number</p>
-          <p className="tabular truncate text-lg font-bold text-ink">{phone ? formatPhone(phone) : "Not added yet"}</p>
+          <p className="tabular truncate text-lg font-semibold text-ink">{phone ? formatPhone(phone) : "Not added yet"}</p>
         </div>
         <Button
           variant="secondary"

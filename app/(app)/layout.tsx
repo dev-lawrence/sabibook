@@ -35,7 +35,7 @@ export default function AppLayout({ children }: { children: ReactNode }) {
     <div className="mx-auto min-h-dvh max-w-md px-4 pb-[calc(6.5rem+env(safe-area-inset-bottom))] pt-[max(0.5rem,env(safe-area-inset-top))]">
       {me?.isAnonymous && (
         <div className="-mx-4 mb-2 flex items-center justify-between gap-3 bg-paper-deep px-4 py-1.5 text-sm text-ink-soft">
-          <span>Guest demo. Sample sales are in your book.</span>
+          <span className="truncate">Guest demo with a sample book</span>
           <button
             type="button"
             onClick={leaveDemo}

@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { useQuery } from "convex/react";
 import { HugeiconsIcon } from "@hugeicons/react";
@@ -9,7 +10,7 @@ import { Card } from "@/components/ui/Card";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { StatusDots } from "@/components/ui/Spinner";
 
-const REPO_URL = process.env.NEXT_PUBLIC_REPO_URL ?? "https://github.com/your-name/sabibook";
+const REPO_URL = process.env.NEXT_PUBLIC_REPO_URL ?? "https://github.com/dev-lawrence/sabibook";
 const RESULTS_URL = `${REPO_URL}/blob/main/eval/results.md`;
 
 const STEPS = [
@@ -60,19 +61,19 @@ function LiveSpeed() {
 
   return (
     <div className="flex flex-col gap-3">
-      <Card ruled margin>
+      <Card>
         <dl className="grid grid-cols-3 gap-3">
           <div>
             <dt className="text-sm font-semibold text-ink-soft">Listening</dt>
-            <dd className="tabular text-2xl font-bold text-ink">{secs(asr)}</dd>
+            <dd className="tabular text-2xl font-semibold text-ink">{secs(asr)}</dd>
           </div>
           <div>
             <dt className="text-sm font-semibold text-ink-soft">Writing</dt>
-            <dd className="tabular text-2xl font-bold text-ink">{secs(llm)}</dd>
+            <dd className="tabular text-2xl font-semibold text-ink">{secs(llm)}</dd>
           </div>
           <div>
             <dt className="text-sm font-semibold text-ink-soft">Notes</dt>
-            <dd className="tabular text-2xl font-bold text-ink">{latency.length}</dd>
+            <dd className="tabular text-2xl font-semibold text-ink">{latency.length}</dd>
           </div>
         </dl>
         <p className="mt-3 text-sm text-ink-soft">
@@ -112,27 +113,31 @@ function LiveSpeed() {
 export default function HowItWorksPage() {
   return (
     <main className="mx-auto flex w-full max-w-xl flex-col gap-8 px-4 pb-16 pt-4">
-      <header className="flex flex-col gap-2">
+      <header className="enter flex flex-col gap-2">
         <Link
           href="/"
-          className="inline-flex min-h-12 items-center gap-1 self-start text-base font-semibold text-ink underline underline-offset-4"
+          className="inline-flex min-h-12 items-center gap-1 self-start text-base font-semibold text-ink underline underline-offset-4 transition-colors duration-150 hover:text-ink-soft"
         >
           <HugeiconsIcon icon={ArrowLeft01Icon} size={22} />
           Back to your book
         </Link>
-        <h1 className="text-3xl font-bold text-ink">How SabiBook works</h1>
+        <h1 className="text-3xl font-semibold tracking-[-0.03em] text-ink">How SabiBook works</h1>
         <p className="text-base text-ink-soft">
           You talk, it writes the entry, you check it. Here is what happens in between and which models do the work.
         </p>
       </header>
 
       <section aria-labelledby="flow-heading" className="flex flex-col gap-3">
-        <h2 id="flow-heading" className="text-xl font-bold text-ink">What happens when you talk</h2>
+        <h2 id="flow-heading" className="text-xl font-semibold tracking-[-0.02em] text-ink">What happens when you talk</h2>
         <ol className="flex flex-col items-stretch">
           {STEPS.map((s, i) => (
-            <li key={s.title} className="flex flex-col items-center">
-              <div className="margin-rule w-full rounded-card border border-rule bg-card p-4 pl-5">
-                <p className="text-base font-bold text-ink">
+            <li
+              key={s.title}
+              className="enter flex flex-col items-center"
+              style={{ "--i": i } as CSSProperties}
+            >
+              <div className="w-full rounded-card border border-rule bg-card p-4">
+                <p className="text-base font-semibold text-ink">
                   <span className="tabular mr-2 text-margin">{i + 1}.</span>
                   {s.title}
                 </p>
@@ -149,7 +154,7 @@ export default function HowItWorksPage() {
       </section>
 
       <section aria-labelledby="models-heading" className="flex flex-col gap-3">
-        <h2 id="models-heading" className="text-xl font-bold text-ink">Models</h2>
+        <h2 id="models-heading" className="text-xl font-semibold tracking-[-0.02em] text-ink">Models</h2>
         <p className="text-base text-ink-soft">All three are open weight, so you can download them and run them yourself.</p>
         <Card className="overflow-x-auto p-0">
           <table className="w-full text-left text-sm">
@@ -177,12 +182,12 @@ export default function HowItWorksPage() {
       </section>
 
       <section aria-labelledby="speed-heading" className="flex flex-col gap-3">
-        <h2 id="speed-heading" className="text-xl font-bold text-ink">Live speed</h2>
+        <h2 id="speed-heading" className="text-xl font-semibold tracking-[-0.02em] text-ink">Live speed</h2>
         <LiveSpeed />
       </section>
 
       <section aria-labelledby="accuracy-heading" className="flex flex-col gap-3">
-        <h2 id="accuracy-heading" className="text-xl font-bold text-ink">How accurate is it</h2>
+        <h2 id="accuracy-heading" className="text-xl font-semibold tracking-[-0.02em] text-ink">How accurate is it</h2>
         <p className="text-base text-ink">
           We test the models on fixed sets and publish the results, including the misses. For the language model we
           check each field of the ledger entry (type, date, customer, total, paid, balance, items, flags) for every
@@ -193,14 +198,14 @@ export default function HowItWorksPage() {
           href={RESULTS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="min-h-12 content-center self-start text-base font-semibold text-ink underline underline-offset-4"
+          className="min-h-12 content-center self-start text-base font-semibold text-ink underline underline-offset-4 transition-colors duration-150 hover:text-ink-soft"
         >
           Read the eval results on GitHub
         </a>
       </section>
 
       <section aria-labelledby="open-heading" className="flex flex-col gap-3">
-        <h2 id="open-heading" className="text-xl font-bold text-ink">Why open models</h2>
+        <h2 id="open-heading" className="text-xl font-semibold tracking-[-0.02em] text-ink">Why open models</h2>
         <p className="text-base text-ink">
           A trader&rsquo;s sales and debts are private. With open models the whole stack can run on a laptop or a small
           server in Lagos that you control, so your data stays with models you run yourself.

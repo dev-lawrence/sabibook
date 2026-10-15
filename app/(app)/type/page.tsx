@@ -61,7 +61,7 @@ export default function TypePage() {
             key={ex}
             type="button"
             onClick={() => setText(ex)}
-            className="min-h-14 rounded-2xl border border-rule bg-card px-4 py-2 text-left text-base text-ink hover:bg-paper-deep"
+            className="min-h-14 rounded-2xl border border-rule bg-card px-4 py-2 text-left text-base text-ink transition-colors duration-150 hover:bg-paper-deep active:bg-paper-deep"
           >
             &ldquo;{ex}&rdquo;
           </button>

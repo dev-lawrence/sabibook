@@ -60,20 +60,20 @@ export default function EntryPage({ params }: { params: Promise<{ entryId: strin
         backHref="/ledger"
       />
 
-      <Card margin className="flex flex-col gap-4">
+      <Card className="flex flex-col gap-4">
         {entry.customerName && (
           <div>
             <p className="text-sm font-semibold text-ink-soft">Customer</p>
             {entry.customerId ? (
               <Link
                 href={`/debtors/${entry.customerId}`}
-                className="flex min-h-12 items-center gap-1 text-xl font-bold text-ink underline underline-offset-4"
+                className="flex min-h-12 items-center gap-1 text-xl font-semibold tracking-[-0.02em] text-ink underline underline-offset-4 transition-colors duration-150 hover:text-ink-soft"
               >
                 {entry.customerName}
                 <HugeiconsIcon icon={ArrowRight01Icon} size={20} />
               </Link>
             ) : (
-              <p className="text-xl font-bold text-ink">{entry.customerName}</p>
+              <p className="text-xl font-semibold tracking-[-0.02em] text-ink">{entry.customerName}</p>
             )}
           </div>
         )}
@@ -101,7 +101,7 @@ export default function EntryPage({ params }: { params: Promise<{ entryId: strin
           </table>
         )}
 
-        <dl className="flex flex-col gap-2 border-t-2 border-ink pt-3">
+        <dl className="flex flex-col gap-2 border-t border-ink pt-3">
           <div className="flex items-baseline justify-between">
             <dt className="text-lg font-semibold text-ink">Total</dt>
             <dd>
@@ -208,8 +208,8 @@ function ShareSection({
   }
 
   return (
-    <Card className="flex flex-col gap-3">
-      <h2 className="text-xl font-bold text-ink">Receipt link</h2>
+    <Card className="enter flex flex-col gap-3">
+      <h2 className="text-xl font-semibold tracking-[-0.02em] text-ink">Receipt link</h2>
       <p className="tabular break-all rounded-xl bg-paper-deep px-4 py-3 text-base text-ink">{url}</p>
       <Button full onClick={openWhatsApp}>
         <HugeiconsIcon icon={WhatsappIcon} size={24} />
@@ -252,8 +252,8 @@ function DeleteSection({ entryId }: { entryId: Id<"entries"> }) {
   }
 
   return (
-    <Card className="flex flex-col gap-3 border-owed">
-      <p className="text-lg font-bold text-ink">Delete this entry?</p>
+    <Card className="enter flex flex-col gap-3 border-owed">
+      <p className="text-lg font-semibold tracking-[-0.02em] text-ink">Delete this entry?</p>
       <p className="text-base text-ink-soft">Your totals and balances will change back. This cannot be undone.</p>
       {error && (
         <p role="alert" className="rounded-xl bg-flag px-4 py-3 text-base font-medium text-flag-ink">

@@ -24,7 +24,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ token: strin
   if (receipt === null) {
     return (
       <main className="mx-auto flex min-h-dvh max-w-md flex-col items-center justify-center gap-2 px-6 text-center">
-        <h1 className="text-2xl font-bold text-ink">Receipt not found</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.02em] text-ink">Receipt not found</h1>
         <p className="text-base text-ink-soft">This link may be wrong, or the receipt was removed. Please ask the seller to send it again.</p>
       </main>
     );
@@ -41,10 +41,10 @@ export default function ReceiptPage({ params }: { params: Promise<{ token: strin
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-5 px-4 py-6 print:max-w-none print:p-0">
-      <article className="rounded-card border border-rule bg-card px-5 py-6 shadow-sm print:border-0 print:shadow-none">
+      <article className="enter rounded-card border border-rule bg-card px-5 py-6 print:border-0">
         <header className="text-center">
-          <h1 className="text-2xl font-bold text-ink">{business}</h1>
-          <p className="mt-1 text-sm font-semibold uppercase tracking-widest text-ink-soft">
+          <h1 className="text-2xl font-semibold tracking-[-0.02em] text-ink">{business}</h1>
+          <p className="mt-1 text-base font-semibold text-ink-soft">
             {isPayment ? "Payment receipt" : "Receipt"}
           </p>
           <p className="mt-1 text-base text-ink-soft">{formatDayLabel(receipt.occurredOn)}</p>
@@ -53,7 +53,7 @@ export default function ReceiptPage({ params }: { params: Promise<{ token: strin
         {receipt.customerName && (
           <p className="mt-4 text-base text-ink">
             <span className="text-ink-soft">For: </span>
-            <span className="font-bold">{receipt.customerName}</span>
+            <span className="font-semibold">{receipt.customerName}</span>
           </p>
         )}
 
@@ -73,8 +73,8 @@ export default function ReceiptPage({ params }: { params: Promise<{ token: strin
 
         <dl className="mt-4 flex flex-col gap-2">
           <div className="flex items-baseline justify-between">
-            <dt className="text-lg font-bold text-ink">Total</dt>
-            <dd className="tabular text-2xl font-bold text-ink">{formatNaira(receipt.total)}</dd>
+            <dt className="text-lg font-semibold text-ink">Total</dt>
+            <dd className="tabular text-2xl font-semibold text-ink">{formatNaira(receipt.total)}</dd>
           </div>
           {!isPayment && (
             <div className="flex items-baseline justify-between">
@@ -85,14 +85,14 @@ export default function ReceiptPage({ params }: { params: Promise<{ token: strin
           {!isPayment && (
             <div className="flex items-baseline justify-between">
               <dt className="text-base text-ink-soft">{owed ? "Balance owed" : "Balance"}</dt>
-              <dd className={`tabular text-lg font-bold ${owed ? "text-owed" : "text-money"}`}>
+              <dd className={`tabular text-lg font-semibold ${owed ? "text-owed" : "text-money"}`}>
                 {owed ? formatNaira(receipt.balance) : "Paid in full"}
               </dd>
             </div>
           )}
         </dl>
 
-        <div className="my-5 border-t-2 border-dashed border-ink-soft" aria-hidden />
+        <div className="my-5 border-t border-dashed border-ink-soft" aria-hidden />
         <p className="text-center text-sm text-ink-soft">Written with SabiBook</p>
       </article>
 

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* SabiBook: a market trader's exercise book, not a dashboard.
-   Cream paper, brown ink, a red margin rule, green for money in. */
+   Cream paper, brown ink, one red accent, green for money in. */
 @theme {
   --font-sans: var(--font-google-sans), ui-sans-serif, system-ui, sans-serif;
 
@@ -44,11 +44,6 @@ body {
     var(--color-rule) 2.45rem,
     var(--color-rule) calc(2.45rem + 1px)
   );
-}
-
-/* The red margin rule down the left of a page. */
-.margin-rule {
-  box-shadow: inset 3px 0 0 0 var(--color-margin);
 }
 
 .tabular {
@@ -112,6 +107,78 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .rise,
   .reveal {
+    animation: none;
+  }
+}
+
+/* App motion. Short and quiet. Every rule here is off for reduced motion.
+   .enter fades and rises 8px once; set --i for a small stagger (max 8 steps).
+   Both keyframes end at "none" so no transform is left behind, which keeps
+   position: fixed children working. */
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-enter {
+  animation: enter 280ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+.enter {
+  animation: enter 320ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  animation-delay: calc(min(var(--i, 0), 8) * 35ms);
+}
+
+/* .stagger: direct children rise in one after another (first 8 steps). */
+.stagger > * {
+  animation: enter 320ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+.stagger > :nth-child(2) { animation-delay: 35ms; }
+.stagger > :nth-child(3) { animation-delay: 70ms; }
+.stagger > :nth-child(4) { animation-delay: 105ms; }
+.stagger > :nth-child(5) { animation-delay: 140ms; }
+.stagger > :nth-child(6) { animation-delay: 175ms; }
+.stagger > :nth-child(7) { animation-delay: 210ms; }
+.stagger > :nth-child(n + 8) { animation-delay: 245ms; }
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.pop-in {
+  animation: pop-in 260ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+@keyframes pill-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.pill-in {
+  animation: pill-in 200ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-enter,
+  .enter,
+  .stagger > *,
+  .pop-in,
+  .pill-in {
     animation: none;
   }
 }

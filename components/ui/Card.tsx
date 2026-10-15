@@ -4,18 +4,16 @@ type Props = {
   children: ReactNode;
   /** Lined exercise-book paper, good for handwriting such as transcripts. */
   ruled?: boolean;
-  /** Red margin line down the left edge, used for lists of entries. */
-  margin?: boolean;
+  /** No padding, for cards split into their own sections. */
+  flush?: boolean;
   className?: string;
 };
 
-/** A paper card with a soft border, like a page torn from an exercise book. */
-export function Card({ children, ruled, margin, className = "" }: Props) {
+/** A paper card with a hairline border, like a page torn from an exercise book. */
+export function Card({ children, ruled, flush, className = "" }: Props) {
   return (
     <div
-      className={`rounded-card border border-rule bg-card p-4 ${ruled ? "ruled" : ""} ${
-        margin ? "margin-rule pl-5" : ""
-      } ${className}`}
+      className={`rounded-card border border-rule bg-card ${flush ? "" : "p-4"} ${ruled ? "ruled" : ""} ${className}`}
     >
       {children}
     </div>

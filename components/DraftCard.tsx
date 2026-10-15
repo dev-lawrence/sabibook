@@ -99,11 +99,11 @@ function SavedPanel({ owed }: { owed: number }) {
     return () => clearTimeout(t);
   }, [router]);
   return (
-    <Card className="flex flex-col items-center gap-3 py-10 text-center">
-      <span className="text-money">
+    <Card className="enter flex flex-col items-center gap-3 py-10 text-center">
+      <span className="pop-in text-money">
         <HugeiconsIcon icon={CheckmarkCircle02Icon} size={64} />
       </span>
-      <p className="text-2xl font-bold text-ink">Saved to your book</p>
+      <p className="text-2xl font-semibold tracking-[-0.02em] text-ink">Saved to your book</p>
       {owed > 0 && <p className="text-base text-owed">{formatNaira(owed)} is still owed on this one.</p>}
       <Button href="/" variant="secondary">
         Back home
@@ -115,11 +115,11 @@ function SavedPanel({ owed }: { owed: number }) {
 function ConfirmedSummary({ entry }: { entry: Entry }) {
   const owed = entry.balance ?? 0;
   return (
-    <Card margin className="flex flex-col gap-3">
+    <Card className="enter flex flex-col gap-3">
       <p className="text-sm font-semibold text-ink-soft">
         {ENTRY_TYPE_LABEL[entry.type]} &middot; {formatDayLabel(entry.occurredOn)}
       </p>
-      <p className="text-xl font-bold text-ink">{entry.customerName ?? "No name"}</p>
+      <p className="text-xl font-semibold tracking-[-0.02em] text-ink">{entry.customerName ?? "No name"}</p>
       {entry.items.length > 0 && (
         <ul className="text-base text-ink">
           {entry.items.map((i, idx) => (
@@ -151,7 +151,7 @@ function ConfirmedSummary({ entry }: { entry: Entry }) {
           See it in my ledger
         </Button>
         {entry.receiptToken && (
-          <Link href={`/r/${entry.receiptToken}`} className="min-h-12 content-center text-center text-base font-semibold text-ink underline underline-offset-4">
+          <Link href={`/r/${entry.receiptToken}`} className="min-h-12 content-center text-center text-base font-semibold text-ink underline underline-offset-4 transition-colors duration-150 hover:text-ink-soft">
             Open receipt
           </Link>
         )}
@@ -267,7 +267,7 @@ function DraftForm({
     <div className="flex flex-col gap-5">
       {showTranscript && entry.transcript && <Transcript text={entry.transcript} />}
 
-      <Card className="flex flex-col gap-5">
+      <Card className="stagger flex flex-col gap-5">
         <fieldset className="flex flex-col gap-1.5">
           <legend className="mb-1.5 text-base font-semibold text-ink">What kind of entry is it?</legend>
           <div className="grid grid-cols-2 gap-2" role="radiogroup">
@@ -280,7 +280,7 @@ function DraftForm({
                   role="radio"
                   aria-checked={on}
                   onClick={() => set("type", t)}
-                  className={`min-h-14 rounded-xl border-2 px-2 text-base font-semibold ${
+                  className={`min-h-14 rounded-xl border px-2 text-base font-semibold transition-colors duration-150 focus-visible:outline-3 focus-visible:outline-offset-2 focus-visible:outline-ink ${
                     on ? "border-ink bg-ink text-paper" : "border-rule bg-card text-ink hover:bg-paper-deep"
                   }`}
                 >
@@ -329,7 +329,7 @@ function DraftForm({
             {form.items.map((item, idx) => {
               const amountFlag = flagFor(`items.${idx}.amount`);
               return (
-                <div key={idx} className="flex flex-col gap-2 rounded-xl border border-rule bg-paper p-3">
+                <div key={idx} className="enter flex flex-col gap-2 rounded-xl border border-rule bg-paper p-3">
                   <div className="flex items-center gap-2">
                     <Input
                       aria-label={`Item ${idx + 1} name`}
@@ -341,7 +341,7 @@ function DraftForm({
                       type="button"
                       aria-label={`Remove item ${idx + 1}`}
                       onClick={() => setForm((f) => ({ ...f, items: f.items.filter((_, i) => i !== idx) }))}
-                      className="flex size-14 shrink-0 items-center justify-center rounded-xl text-owed hover:bg-owed-soft"
+                      className="flex size-14 shrink-0 items-center justify-center rounded-xl text-owed transition-colors duration-150 hover:bg-owed-soft"
                     >
                       <HugeiconsIcon icon={Delete02Icon} size={24} />
                     </button>
@@ -415,7 +415,7 @@ function DraftForm({
         )}
 
         <div
-          className={`flex items-center justify-between rounded-xl px-4 py-3 ${
+          className={`flex items-center justify-between rounded-xl px-4 py-3 transition-colors duration-300 ${
             balance !== null && balance > 0 ? "bg-owed-soft" : "bg-money-soft"
           }`}
           aria-live="polite"

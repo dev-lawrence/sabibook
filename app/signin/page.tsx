@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, type CSSProperties, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useAuthActions } from "@convex-dev/auth/react";
-import { HugeiconsIcon } from "@hugeicons/react";
-import { Mic01Icon } from "@hugeicons/core-free-icons";
+import { LogoMark } from "@/components/Logo";
 import { Button } from "@/components/ui/Button";
 import { Field, Input } from "@/components/ui/Field";
 import { Spinner } from "@/components/ui/Spinner";
@@ -66,19 +65,17 @@ export default function SignInPage() {
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-8 px-5 pb-10 pt-12">
-      <header className="flex flex-col gap-4">
-        <div className="flex size-16 items-center justify-center rounded-2xl bg-record text-white">
-          <HugeiconsIcon icon={Mic01Icon} size={34} />
-        </div>
+      <header className="rise flex flex-col gap-4">
+        <LogoMark size={56} />
         <div>
-          <h1 className="text-4xl font-bold tracking-tight text-ink">SabiBook</h1>
+          <h1 className="text-4xl font-semibold tracking-[-0.03em] text-ink">SabiBook</h1>
           <p className="mt-2 text-xl leading-snug text-ink-soft">
             Just say what you sold. SabiBook writes it down and remembers who still owes you.
           </p>
         </div>
       </header>
 
-      <section className="flex flex-col gap-2">
+      <section className="rise flex flex-col gap-2" style={{ "--d": "80ms" } as CSSProperties}>
         <Button full onClick={tryDemo} disabled={busy !== null} className="min-h-16 text-xl">
           {busy === "demo" ? <Spinner /> : null}
           Try the demo
@@ -94,7 +91,7 @@ export default function SignInPage() {
         <span className="h-px flex-1 bg-rule" />
       </div>
 
-      <form onSubmit={submit} className="flex flex-col gap-4">
+      <form onSubmit={submit} className="rise flex flex-col gap-4" style={{ "--d": "160ms" } as CSSProperties}>
         <Field label="Email" htmlFor="email">
           <Input id="email" name="email" type="email" autoComplete="email" required placeholder="you@example.com" />
         </Field>
@@ -125,7 +122,7 @@ export default function SignInPage() {
             setFlow(creating ? "signIn" : "signUp");
             setError(null);
           }}
-          className="min-h-12 text-base font-semibold text-ink underline underline-offset-4"
+          className="min-h-12 text-base font-semibold text-ink underline underline-offset-4 transition-colors duration-150 hover:text-ink-soft"
         >
           {creating ? "I already have an account" : "New here? Create an account"}
         </button>

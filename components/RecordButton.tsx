@@ -225,7 +225,7 @@ export function RecordButton({ size = "large", hint }: { size?: "large" | "compa
           onPointerCancel={onPointerUp}
           onContextMenu={(e) => e.preventDefault()}
           onKeyDown={onKeyDown}
-          className={`relative flex ${compact ? "size-24" : "size-44"} touch-none select-none flex-col items-center justify-center gap-1 rounded-full text-white shadow-[0_6px_0_0_var(--color-record-deep)] transition-transform active:translate-y-1 active:shadow-[0_2px_0_0_var(--color-record-deep)] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-ink ${
+          className={`relative flex ${compact ? "size-24" : "size-44"} touch-none select-none flex-col items-center justify-center gap-1 rounded-full text-white shadow-[0_6px_0_0_var(--color-record-deep)] transition-[translate,scale,box-shadow,background-color] duration-150 ease-out active:translate-y-1 active:scale-[0.97] active:shadow-[0_2px_0_0_var(--color-record-deep)] focus-visible:outline-4 focus-visible:outline-offset-4 focus-visible:outline-ink ${
             recording ? "record-pulse bg-record-deep" : "bg-record"
           } ${phase === "sending" ? "opacity-70" : ""}`}
         >
@@ -234,7 +234,7 @@ export function RecordButton({ size = "large", hint }: { size?: "large" | "compa
           ) : (
             <HugeiconsIcon icon={recording ? StopIcon : Mic01Icon} size={compact ? 32 : 56} />
           )}
-          <span className={`tabular font-bold ${compact ? "text-sm" : "text-lg"}`}>
+          <span className={`tabular font-semibold ${compact ? "text-sm" : "text-lg"}`}>
             {recording ? `0:${String(elapsed).padStart(2, "0")}` : phase === "sending" ? "Sending" : compact ? "Speak" : "Hold to talk"}
           </span>
         </button>
@@ -256,7 +256,7 @@ export function RecordButton({ size = "large", hint }: { size?: "large" | "compa
       {denied && (
         <p role="alert" className="rounded-xl bg-owed-soft px-4 py-3 text-center text-base font-medium text-owed">
           SabiBook cannot use your microphone. Allow it in your browser settings, or{" "}
-          <Link href="/type" className="font-bold underline underline-offset-4">
+          <Link href="/type" className="font-semibold underline underline-offset-4">
             type it instead
           </Link>
           .
