@@ -48,3 +48,6 @@ next-env.d.ts
 /video/node_modules
 /video/out
 /video/.remotion
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
