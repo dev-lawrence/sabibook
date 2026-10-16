@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 import { HugeiconsIcon } from "@hugeicons/react";
-import { ArrowUpRight01Icon, GithubIcon, Video01Icon } from "@hugeicons/core-free-icons";
+import { ArrowUpRight01Icon, GithubIcon } from "@hugeicons/core-free-icons";
+import { Logo } from "@/components/Logo";
 import { DemoButton } from "./DemoButton";
 import { PhoneFrame } from "./PhoneFrame";
 import { PhoneShowcase, type Screen } from "./PhoneShowcase";
@@ -18,10 +19,10 @@ export const metadata: Metadata = {
 const REPO_URL = "https://github.com/dev-lawrence/sabibook";
 
 const SCREENS: Screen[] = [
-  { id: "home", src: "/landing/home.png", alt: "SabiBook home screen with the red Hold to talk button", caption: "Home, with the one button" },
-  { id: "draft", src: "/landing/draft.png", alt: "Draft card showing the sentence it heard and the fields it filled in", caption: "The draft card" },
-  { id: "save", src: "/landing/draft-save.png", alt: "Bottom of the draft card: total, paid now, still owed, and the Save button", caption: "Nothing is saved until you tap Save" },
-  { id: "debtors", src: "/landing/debtors.png", alt: "Debtors screen listing each customer and how much they owe", caption: "Who owes you, and how much" },
+  { id: "home", src: "/landing/home-v2.png", alt: "SabiBook home screen with the red Hold to talk button", caption: "Home, with the one button" },
+  { id: "draft", src: "/landing/draft-v2.png", alt: "Draft card showing the sentence it heard and the fields it filled in", caption: "The draft card" },
+  { id: "save", src: "/landing/draft-save-v2.png", alt: "Bottom of the draft card: total, paid now, still owed, and the Save button", caption: "Nothing is saved until you tap Save" },
+  { id: "debtors", src: "/landing/debtors-v2.png", alt: "Debtors screen listing each customer and how much they owe", caption: "Who owes you, and how much" },
 ];
 
 const STEPS = [
@@ -86,7 +87,7 @@ export default function WelcomePage() {
           <div className="rise -mt-2 mb-16 flex justify-center lg:hidden" style={{ "--d": "300ms" } as CSSProperties}>
             <figure className="flex w-full flex-col items-center gap-3">
               <PhoneFrame className="max-w-[16.5rem]">
-                <PhoneFrame.Screen src="/landing/draft.png" alt={SCREENS[1].alt} eager />
+                <PhoneFrame.Screen src="/landing/draft-v2.png" alt={SCREENS[1].alt} eager />
               </PhoneFrame>
               <figcaption className="text-sm text-ink-soft">The draft card, from the real app</figcaption>
             </figure>
@@ -203,9 +204,8 @@ function SiteHeader() {
   return (
     <header className="border-b border-rule">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5 sm:px-8 lg:px-10">
-        <Link href="/" className="flex items-center gap-2.5 text-lg font-semibold tracking-[-0.02em]">
-          <span aria-hidden className="size-3 rounded-full bg-record" />
-          SabiBook
+        <Link href="/" aria-label="SabiBook home">
+          <Logo />
         </Link>
         <nav aria-label="Site" className="flex items-center gap-5 sm:gap-7">
           <Link href="/how-it-works" className="hidden text-[0.9375rem] text-ink-soft transition-colors hover:text-ink sm:inline">
@@ -229,11 +229,21 @@ function SiteHeader() {
 function VideoSlot() {
   return (
     <section aria-label="Demo video" className="reveal mb-16 lg:mb-24">
-      {/* Swap this box for the real video once it is recorded. */}
-      <div className="ruled flex aspect-video w-full flex-col items-center justify-center gap-3 rounded-card border border-rule bg-card text-ink-soft">
-        <HugeiconsIcon icon={Video01Icon} size={28} />
-        <p className="bg-card px-2 text-base font-medium">Demo video coming soon</p>
-      </div>
+      <video
+        className="aspect-video w-full rounded-card border border-rule bg-paper-deep"
+        src="/landing/demo.mp4"
+        poster="/landing/demo-poster.jpg"
+        controls
+        muted
+        playsInline
+        preload="none"
+      >
+        <track kind="captions" src="/landing/demo.vtt" srcLang="en" label="English" default />
+      </video>
+      <p className="mt-3 text-sm text-ink-soft">
+        A real run on a laptop. The voice is a text-to-speech recording played into the microphone, and the
+        waits while the models work are cut, with the cuts marked.
+      </p>
     </section>
   );
 }
