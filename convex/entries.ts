@@ -1,3 +1,4 @@
+import { getAuthUserId } from "@convex-dev/auth/server";
 import { paginationOptsValidator } from "convex/server";
 import { ConvexError, v } from "convex/values";
 import type { Doc } from "./_generated/dataModel";
@@ -166,7 +167,9 @@ export const recent = query({
 export const ledger = query({
   args: { paginationOpts: paginationOptsValidator },
   handler: async (ctx, { paginationOpts }) => {
-    const userId = await requireUserId(ctx);
+    // Empty, not an error: the ledger is still subscribed when "Leave demo" signs out.
+    const userId = await getAuthUserId(ctx);
+    if (!userId) return { page: [], isDone: true, continueCursor: "" };
     return await ctx.db
       .query("entries")
       .withIndex("by_userId_and_status_and_occurredOn", (q) =>
